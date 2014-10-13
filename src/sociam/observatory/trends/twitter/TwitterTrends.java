@@ -6,10 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import sociam.observatory.trends.Country;
 import sociam.observatory.trends.TrendingTopic;
 import twitter4j.Location;
-import twitter4j.ResponseList;
 import twitter4j.Trend;
 import twitter4j.Trends;
 import twitter4j.Twitter;
@@ -19,54 +17,17 @@ import twitter4j.TwitterFactory;
 public class TwitterTrends {
 
 	private Twitter twitter;
+	private LocationLoader locationLoader;
 	
 	public TwitterTrends() {
 		twitter = new TwitterFactory().getInstance();
+		locationLoader = new LocationLoader("harvester.properties");
 	}
 
-	private List<Location> getAvailableCountries() {
-		List<Location> countries = new ArrayList<Location>();
-		try {
-			ResponseList<Location> locations = twitter.getAvailableTrends();
-			for (Location loc : locations) {
-				if (loc.getPlaceName().equals("Country")) {
-					countries.add(loc);
-				}
-			}
-		} catch (TwitterException te) {
-			te.printStackTrace();
-		}
-		return countries;
-	}
-	
-	private List<TrendingTopic> getTrendsByCountry(Location country) {
+	private List<TrendingTopic> getTrendsByLocation(Location loc) {
 		List<TrendingTopic> out = new ArrayList<TrendingTopic>();
 		try {
-			Trends trends = twitter.getPlaceTrends(country.getWoeid());
-			Date asof = trends.getAsOf(); 
-			Country c = new Country(country.getCountryName(), country.getCountryCode()); // check if country == trends.getLocation()
-			int rank = 1;
-			for (Trend trend : trends.getTrends()) {
-				TrendingTopic tt = new TrendingTopic(trend.getName(), "Twitter", rank++);
-				tt.setTimestamp(asof);
-				try {
-					tt.setLink(new URL(trend.getURL()));
-				} catch (MalformedURLException e) {
-					e.printStackTrace();
-				}
-				tt.setLocation(c);
-				out.add(tt);
-			}
-		} catch (TwitterException e) {
-			e.printStackTrace();
-		}
-		return out;
-	}
-
-	private List<TrendingTopic> getTrendsWorldwide() {
-		List<TrendingTopic> out = new ArrayList<TrendingTopic>();
-		try {
-			Trends trends = twitter.getPlaceTrends(1);
+			Trends trends = twitter.getPlaceTrends(loc.getWoeid());
 			Date asof = trends.getAsOf(); 
 			int rank = 1;
 			for (Trend trend : trends.getTrends()) {
@@ -77,7 +38,7 @@ public class TwitterTrends {
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
 				}
-				tt.setLocation(sociam.observatory.trends.Location.Worldwide);
+				tt.setLocation(loc.getName());
 				out.add(tt);
 			}
 		} catch (TwitterException e) {
@@ -85,16 +46,14 @@ public class TwitterTrends {
 		}
 		return out;
 	}
-	
-	public void getOnce() {
-		for (TrendingTopic tt : getTrendsWorldwide()) {
-			System.out.println(tt);
+
+	public List<TrendingTopic> getTrendingTopics() {
+		List<TrendingTopic> out = new ArrayList<TrendingTopic>();
+		for (Location loc : locationLoader.getAvailableLocations(twitter)) {
+			out.addAll(getTrendsByLocation(loc));
 		}
-		for (Location country : getAvailableCountries() ) {
-			for (TrendingTopic tt : getTrendsByCountry(country)) {
-				System.out.println(tt);
-			}
-			System.exit(0);
-		}
+		return out;
 	}
+	
+	
 }

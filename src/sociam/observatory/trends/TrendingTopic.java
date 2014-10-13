@@ -13,7 +13,7 @@ public class TrendingTopic {
 	private Date timestamp;
 	private URL link; 
 	private List<URL> items;
-	private Location location;
+	private String location;
 
 	public TrendingTopic(String l, String s, int r) {
 		setLabel(l);
@@ -22,10 +22,10 @@ public class TrendingTopic {
 		setTimestamp(new Date());
 		setLink(null);
 		setItems(new ArrayList<URL>());
-		setLocation(Location.Worldwide);
+		setLocation("Worldwide");
 	}
 
-	public TrendingTopic(String l, String s, int r, Date t, URL u, List<URL> i, Location loc) {
+	public TrendingTopic(String l, String s, int r, Date t, URL u, List<URL> i, String loc) {
 		setLabel(l);
 		setSource(s);
 		setRank(r);
@@ -83,15 +83,15 @@ public class TrendingTopic {
 		this.items = items;
 	}
 
-	public Location getLocation() {
+	public String getLocation() {
 		return location;
 	}
 
-	public void setLocation(Location location) {
+	public void setLocation(String location) {
 		this.location = location;
 	}
 	
 	public String toString() {
-		return "("+location.getName()+" ["+rank+"]) "+label;
+		return "("+location+" ["+rank+"]) "+label;
 	}
 }
