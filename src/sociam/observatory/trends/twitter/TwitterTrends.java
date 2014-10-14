@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import sociam.observatory.trends.TrendingTopic;
+import sociam.observatory.trends.TrendingTopics;
 import twitter4j.Location;
 import twitter4j.Trend;
 import twitter4j.Trends;
@@ -24,33 +25,31 @@ public class TwitterTrends {
 		locationLoader = new LocationLoader("harvester.properties");
 	}
 
-	private List<TrendingTopic> getTrendsByLocation(Location loc) {
-		List<TrendingTopic> out = new ArrayList<TrendingTopic>();
+	private TrendingTopics getTrendsByLocation(Location loc) {
+		TrendingTopics topics = null;
 		try {
 			Trends trends = twitter.getPlaceTrends(loc.getWoeid());
-			Date asof = trends.getAsOf(); 
+			Date asof = trends.getAsOf();
+			topics = new TrendingTopics("Twitter", asof, (loc.getPlaceName().equals("Town")?loc.getName()+", "+loc.getCountryName():loc.getName()));
 			int rank = 1;
 			for (Trend trend : trends.getTrends()) {
-				TrendingTopic tt = new TrendingTopic(trend.getName(), "Twitter", rank++);
-				tt.setTimestamp(asof);
+				TrendingTopic tt = new TrendingTopic(topics, trend.getName(), rank++);
 				try {
 					tt.setLink(new URL(trend.getURL()));
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
 				}
-				tt.setLocation(loc.getName());
-				out.add(tt);
 			}
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
-		return out;
+		return topics;
 	}
 
-	public List<TrendingTopic> getTrendingTopics() {
-		List<TrendingTopic> out = new ArrayList<TrendingTopic>();
+	public List<TrendingTopics> getTrendingTopics() {
+		List<TrendingTopics> out = new ArrayList<TrendingTopics>();
 		for (Location loc : locationLoader.getAvailableLocations(twitter)) {
-			out.addAll(getTrendsByLocation(loc));
+			out.add(getTrendsByLocation(loc));
 		}
 		return out;
 	}

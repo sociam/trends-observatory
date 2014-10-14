@@ -1,38 +1,40 @@
 package sociam.observatory.trends;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class TrendingTopic {
 
 	private String label;
-	private String source;
 	private int rank;
-	private Date timestamp;
 	private URL link; 
 	private List<URL> items;
-	private String location;
+	private TrendingTopics set;
 
-	public TrendingTopic(String l, String s, int r) {
-		setLabel(l);
-		setSource(s);
-		setRank(r);
-		setTimestamp(new Date());
-		setLink(null);
-		setItems(new ArrayList<URL>());
-		setLocation("Worldwide");
+	public TrendingTopic(TrendingTopics s, String l, int r) {
+		set = s;
+		set.addTopic(this);
+		label = l;
+		rank = r;
 	}
 
-	public TrendingTopic(String l, String s, int r, Date t, URL u, List<URL> i, String loc) {
-		setLabel(l);
-		setSource(s);
-		setRank(r);
-		setTimestamp(t);
-		setLink(u);
-		setItems(i);
-		setLocation(loc);
+	public TrendingTopic(TrendingTopics s, String l, int r, URL u, List<URL> i) {
+		set = s;
+		set.addTopic(this);
+		label = l;
+		rank = r;
+		link = u;
+		items = i;
+	}
+	
+	public TrendingTopics getSet() {
+		return set;
+	}
+	
+	public void setSet(TrendingTopics s) {
+		set = s;
+		set.addTopic(this);
 	}
 
 	public String getLabel() {
@@ -43,28 +45,12 @@ public class TrendingTopic {
 		this.label = label;
 	}
 
-	public String getSource() {
-		return source;
-	}
-
-	public void setSource(String source) {
-		this.source = source;
-	}
-
 	public int getRank() {
 		return rank;
 	}
 
 	public void setRank(int rank) {
 		this.rank = rank;
-	}
-
-	public Date getTimestamp() {
-		return timestamp;
-	}
-
-	public void setTimestamp(Date timestamp) {
-		this.timestamp = timestamp;
 	}
 
 	public URL getLink() {
@@ -82,16 +68,16 @@ public class TrendingTopic {
 	public void setItems(List<URL> items) {
 		this.items = items;
 	}
-
-	public String getLocation() {
-		return location;
+	
+	public String getSource() {
+		return set.getSource();
 	}
-
-	public void setLocation(String location) {
-		this.location = location;
+	
+	public Date getTimestamp() {
+		return set.getTimestamp();
 	}
 	
 	public String toString() {
-		return "("+location+" ["+rank+"]) "+label;
+		return "["+rank+"] "+label;
 	}
 }
