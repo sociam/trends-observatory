@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sociam.observatory.trends.google.GoogleTrends;
-import sociam.observatory.trends.storage.MongoUtils;
 import sociam.observatory.trends.storage.MongoWriter;
 import sociam.observatory.trends.twitter.TwitterTrends;
 
