@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sociam.observatory.trends.google.GoogleTrends;
+import sociam.observatory.trends.storage.MongoUtils;
 import sociam.observatory.trends.storage.MongoWriter;
 import sociam.observatory.trends.twitter.TwitterTrends;
 
@@ -28,6 +29,7 @@ public class Observatory {
 					if (!writer.write(topics)) {
 						System.out.println("Not written! "+topics);
 					}
+//					System.out.println(MongoUtils.trendingTopicsToDBObject(topics).toString());
 				}
 				writer.disconnect();
 			} catch(UnknownHostException e) {

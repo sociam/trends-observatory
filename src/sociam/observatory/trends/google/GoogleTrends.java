@@ -12,7 +12,6 @@ import org.jsoup.select.Elements;
 
 import sociam.observatory.trends.TrendingTopic;
 import sociam.observatory.trends.TrendingTopics;
-import twitter4j.Location;
 
 public class GoogleTrends {
 	
@@ -39,7 +38,6 @@ public class GoogleTrends {
 				String link = baseUrl+titleLink.attr("href");
 				TrendingTopic topic = new TrendingTopic(topics, title, rank++);
 				topic.setLink(link);
-				System.out.println(topic);
 			}			
 		} catch (IOException e) {
 			e.printStackTrace();
