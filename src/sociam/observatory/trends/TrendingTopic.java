@@ -1,6 +1,5 @@
 package sociam.observatory.trends;
 
-import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
@@ -8,24 +7,25 @@ public class TrendingTopic {
 
 	private String label;
 	private int rank;
-	private URL link; 
-	private List<URL> items;
+	private String link; 
+	private List<String> items;
+	private String raw; //TODO add a way of storing additional raw data about the topic - can be anything
 	private TrendingTopics set;
 
 	public TrendingTopic(TrendingTopics s, String l, int r) {
 		set = s;
-		set.addTopic(this);
 		label = l;
 		rank = r;
+		set.addTopic(this);
 	}
 
-	public TrendingTopic(TrendingTopics s, String l, int r, URL u, List<URL> i) {
+	public TrendingTopic(TrendingTopics s, String l, int r, String u, List<String> i) {
 		set = s;
-		set.addTopic(this);
 		label = l;
 		rank = r;
 		link = u;
 		items = i;
+		set.addTopic(this);
 	}
 	
 	public TrendingTopics getSet() {
@@ -53,19 +53,19 @@ public class TrendingTopic {
 		this.rank = rank;
 	}
 
-	public URL getLink() {
+	public String getLink() {
 		return link;
 	}
 
-	public void setLink(URL link) {
+	public void setLink(String link) {
 		this.link = link;
 	}
 
-	public List<URL> getItems() {
+	public List<String> getItems() {
 		return items;
 	}
 
-	public void setItems(List<URL> items) {
+	public void setItems(List<String> items) {
 		this.items = items;
 	}
 	

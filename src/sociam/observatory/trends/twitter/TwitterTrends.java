@@ -1,7 +1,5 @@
 package sociam.observatory.trends.twitter;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,11 +32,7 @@ public class TwitterTrends {
 			int rank = 1;
 			for (Trend trend : trends.getTrends()) {
 				TrendingTopic tt = new TrendingTopic(topics, trend.getName(), rank++);
-				try {
-					tt.setLink(new URL(trend.getURL()));
-				} catch (MalformedURLException e) {
-					e.printStackTrace();
-				}
+				tt.setLink(trend.getURL());
 			}
 		} catch (TwitterException e) {
 			e.printStackTrace();
