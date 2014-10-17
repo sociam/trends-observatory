@@ -78,6 +78,6 @@ public class TrendingTopic {
 	}
 	
 	public String toString() {
-		return "["+rank+"] "+label;
+		return "["+rank+"] "+label+" (link: "+link+")";
 	}
 }

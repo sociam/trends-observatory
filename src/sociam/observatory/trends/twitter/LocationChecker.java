@@ -1,61 +1,43 @@
 package sociam.observatory.trends.twitter;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
+import sociam.observatory.trends.Country;
 import twitter4j.Location;
 import twitter4j.ResponseList;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 
-public class LocationLoader {
+public class LocationChecker {
 
-	private String locationsFile;
 	private boolean worldwide;
 	private List<String> countries;
-	private List<String> towns;
+	private List<String> towns; // ["town name, country code"]
 
-	public LocationLoader(String path) {
-		locationsFile = path;
-		worldwide=true;
+	public LocationChecker(boolean world, Country[] cs, String[] ts) {
+		worldwide = world;
 		countries = new ArrayList<String>();
+		for (Country c : cs) {
+			countries.add(c.isoCode);
+		}
+		towns = new ArrayList<String>();
+		for (String t : ts) {
+			towns.add(t);
+		}
+	}
+
+	public LocationChecker(boolean world, List<Country> cs) {
+		worldwide = world;
+		countries = new ArrayList<String>();
+		for (Country c : cs) {
+			countries.add(c.isoCode);
+		}
 		towns = new ArrayList<String>();
 	}
 
-	public LocationLoader() {
-		this("locations.properties");
-	}
-
-	private void readConfig() {
-		try {
-			FileReader reader = new FileReader(locationsFile);
-			Properties props = new Properties();
-			props.load(reader);
-			worldwide = new Boolean(props.getProperty("worldwide", "false")).booleanValue();
-			if (props.containsKey("countries")) {
-				countries = new ArrayList<String>();
-				for (String code: props.getProperty("countries").split(",")) {				
-					countries.add(code.trim());
-				}
-			}
-			if (props.containsKey("towns")) {
-				towns = new ArrayList<String>();
-				for (String town: props.getProperty("towns").split(",")) {				
-					towns.add(town.trim());
-				}
-			}			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
 	public List<Location> getAvailableLocations(Twitter twitter) {
 		List<Location> locations = new ArrayList<Location>();
-		readConfig();
 		if (worldwide) {
 			locations.add(Worldwide.getInstance());
 		}
@@ -67,7 +49,8 @@ public class LocationLoader {
 						locations.add(loc);
 					}
 				} else {
-					if (towns.contains(loc.getName()+";"+loc.getCountryCode())) {
+					if (towns.contains(loc.getName() + ", "
+							+ loc.getCountryCode())) {
 						locations.add(loc);
 					}
 				}
@@ -81,7 +64,9 @@ public class LocationLoader {
 	public static class Worldwide implements Location {
 
 		private static Worldwide instance;
-		protected Worldwide() {}
+
+		protected Worldwide() {
+		}
 
 		public static Worldwide getInstance() {
 			if (instance == null) {

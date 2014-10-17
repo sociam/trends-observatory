@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import sociam.observatory.trends.Country;
 import sociam.observatory.trends.TrendingTopic;
 import sociam.observatory.trends.TrendingTopics;
 import twitter4j.Location;
@@ -16,11 +17,9 @@ import twitter4j.TwitterFactory;
 public class TwitterTrends {
 
 	private Twitter twitter;
-	private LocationLoader locationLoader;
 	
 	public TwitterTrends() {
 		twitter = new TwitterFactory().getInstance();
-		locationLoader = new LocationLoader("harvester.properties");
 	}
 
 	private TrendingTopics getTrendsByLocation(Location loc) {
@@ -41,8 +40,12 @@ public class TwitterTrends {
 	}
 
 	public List<TrendingTopics> getTrendingTopics() {
+		Country[] cs = {Country.US, Country.GB};
+		String[] ts = {"London, GB", "Washington, US"};
+		LocationChecker checker = new LocationChecker(true, cs, ts);
+		
 		List<TrendingTopics> out = new ArrayList<TrendingTopics>();
-		for (Location loc : locationLoader.getAvailableLocations(twitter)) {
+		for (Location loc : checker.getAvailableLocations(twitter)) {
 			out.add(getTrendsByLocation(loc));
 		}
 		return out;

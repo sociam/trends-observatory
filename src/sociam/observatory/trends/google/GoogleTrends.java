@@ -10,6 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import sociam.observatory.trends.Country;
 import sociam.observatory.trends.TrendingTopic;
 import sociam.observatory.trends.TrendingTopics;
 
@@ -27,7 +28,7 @@ public class GoogleTrends {
 		
 		TrendingTopics topics = null;
 		try {
-			Document doc = Jsoup.connect(widgetUrl+"pn=p"+country.code+"&tn="+count).get();
+			Document doc = Jsoup.connect(widgetUrl+"pn=p"+country.googleId+"&tn="+count).get();
 			topics = new TrendingTopics("Google", new Date(), country.name);
 			Elements divs = doc.getElementsByClass("widget-single-item-detailed");
 			int rank = 1;
