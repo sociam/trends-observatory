@@ -1,6 +1,7 @@
 package sociam.observatory.trends.yahoo;
 
 import java.io.IOException;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,7 +56,10 @@ public class YahooTrends {
 		
 		List<TrendingTopics> out = new ArrayList<TrendingTopics>();
 		for (Country country : countries) {
-			out.add(extractTopics(country));
+			TrendingTopics tts = extractTopics(country);
+			if (tts != null) {
+				out.add(tts);
+			}
 		}
 		return out;
 	}

@@ -25,13 +25,15 @@ public class TwitterTrends {
 	private TrendingTopics getTrendsByLocation(Location loc) {
 		TrendingTopics topics = null;
 		try {
-			Trends trends = twitter.getPlaceTrends(loc.getWoeid());
-			Date asof = trends.getAsOf();
-			topics = new TrendingTopics("Twitter", asof, (loc.getPlaceName().equals("Town")?loc.getName()+", "+loc.getCountryName():loc.getName()));
-			int rank = 1;
-			for (Trend trend : trends.getTrends()) {
-				TrendingTopic tt = new TrendingTopic(topics, trend.getName(), rank++);
-				tt.setLink(trend.getURL());
+			if (twitter.getRateLimitStatus().get("/trends/place").getRemaining() > 0) {
+				Trends trends = twitter.getPlaceTrends(loc.getWoeid());
+				Date asof = trends.getAsOf();
+				topics = new TrendingTopics("Twitter", asof, (loc.getPlaceName().equals("Town")?loc.getName()+", "+loc.getCountryName():loc.getName()));
+				int rank = 1;
+				for (Trend trend : trends.getTrends()) {
+					TrendingTopic tt = new TrendingTopic(topics, trend.getName(), rank++);
+					tt.setLink(trend.getURL());
+				}
 			}
 		} catch (TwitterException e) {
 			e.printStackTrace();
@@ -46,7 +48,10 @@ public class TwitterTrends {
 		
 		List<TrendingTopics> out = new ArrayList<TrendingTopics>();
 		for (Location loc : checker.getAvailableLocations(twitter)) {
-			out.add(getTrendsByLocation(loc));
+			TrendingTopics tts = getTrendsByLocation(loc); 
+			if (tts != null) {
+				out.add(tts);
+			}
 		}
 		return out;
 	}

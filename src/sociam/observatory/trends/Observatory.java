@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import sociam.observatory.trends.google.GoogleTrends;
+import sociam.observatory.trends.storage.MongoConnection;
 import sociam.observatory.trends.storage.MongoWriter;
 import sociam.observatory.trends.twitter.TwitterTrends;
 import sociam.observatory.trends.yahoo.YahooTrends;
@@ -18,7 +19,7 @@ public class Observatory {
 		GoogleTrends goo = new GoogleTrends();
 		YahooTrends yah = new YahooTrends();
 		
-		MongoWriter writer = new MongoWriter("mdb-001.ecs.soton.ac.uk", "trends", "trends", "trends");
+		MongoConnection connection = new MongoConnection("mdb-001.ecs.soton.ac.uk", "trends", "trends", "trends");
 
 		while (true) {
 			List<TrendingTopics> trending = new ArrayList<TrendingTopics>();
@@ -27,14 +28,16 @@ public class Observatory {
 			trending.addAll(yah.getTrendingTopics());
 			
 			try { 
-				writer.connect();
+				connection.connect();
+				MongoWriter writer = new MongoWriter(connection, "trending");
+				
 				for (TrendingTopics topics : trending) {
 					if (!writer.write(topics)) {
 						System.out.println("Not written! "+topics);
 					}
 //					System.out.println(MongoUtils.trendingTopicsToDBObject(topics).toString());
 				}
-				writer.disconnect();
+				connection.disconnect();
 				System.out.println(new Date());
 			} catch(UnknownHostException e) {
 				e.printStackTrace();

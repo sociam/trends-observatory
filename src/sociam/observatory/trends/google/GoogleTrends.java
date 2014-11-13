@@ -52,7 +52,10 @@ public class GoogleTrends {
 		
 		List<TrendingTopics> out = new ArrayList<TrendingTopics>();
 		for (Country country : countries) {
-			out.add(extractTopics(country, 10));
+			TrendingTopics tts = extractTopics(country, 10);
+			if (tts != null) {
+				out.add(tts);
+			}
 		}
 		return out;
 	}
