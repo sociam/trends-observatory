@@ -27,7 +27,7 @@ public class MongoUtils {
 		out.put("label", topic.getLabel());
 		out.put("rank", topic.getRank());
 		if (topic.getLink() != null) {
-			out.put("rank", topic.getLink().toString());
+			out.put("link", topic.getLink().toString());
 		}
 		if (topic.getItems() != null && !topic.getItems().isEmpty()) {
 			out.put("items", topic.getItems());

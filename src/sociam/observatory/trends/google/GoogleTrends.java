@@ -10,9 +10,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import sociam.observatory.trends.Country;
 import sociam.observatory.trends.TrendingTopic;
 import sociam.observatory.trends.TrendingTopics;
-import twitter4j.Location;
 
 public class GoogleTrends {
 	
@@ -28,7 +28,7 @@ public class GoogleTrends {
 		
 		TrendingTopics topics = null;
 		try {
-			Document doc = Jsoup.connect(widgetUrl+"pn=p"+country.code+"&tn="+count).get();
+			Document doc = Jsoup.connect(widgetUrl+"pn=p"+country.googleId+"&tn="+count).get();
 			topics = new TrendingTopics("Google", new Date(), country.name);
 			Elements divs = doc.getElementsByClass("widget-single-item-detailed");
 			int rank = 1;
@@ -39,7 +39,6 @@ public class GoogleTrends {
 				String link = baseUrl+titleLink.attr("href");
 				TrendingTopic topic = new TrendingTopic(topics, title, rank++);
 				topic.setLink(link);
-				System.out.println(topic);
 			}			
 		} catch (IOException e) {
 			e.printStackTrace();
