@@ -424,7 +424,7 @@
       {
         "label": "Bryan Adams",
         "rank": 9,
-        "link": " http://trends.google.com/search?q=Bryan+Adams"
+        "link": "http://trends.google.com/search?q=Bryan+Adams"
       },
       {
         "label": "Ezra Miller",
@@ -848,7 +848,7 @@
       {
         "label": "Kesha",
         "rank": 7,
-        "link": " http://trends.google.com/search?q=Kesha"
+        "link": "http://trends.google.com/search?q=Kesha"
       },
       {
         "label": "Lord Freud",
@@ -1061,7 +1061,7 @@
     "timestamp": {
       "$date": 1413481839000
     },
-    "location": " United Kingdom",
+    "location": "United Kingdom",
     "trends": [
       {
         "label": "#AppleEvent",
@@ -1275,7 +1275,7 @@
         "link": "http://trends.google.com/search?q=Michael+McIntyre"
       },
       {
-        " label": "Waterloo Road",
+        "label": "Waterloo Road",
         "rank": 6,
         "link": "http://trends.google.com/search?q=Waterloo+Road"
       },
@@ -2543,7 +2543,7 @@
   },
   {
     "_id": {
-      "$oid": " 544008fb45ce8db6a14dfac7"
+      "$oid": "544008fb45ce8db6a14dfac7"
     },
     "source": "Google",
     "timestamp": {
@@ -2755,7 +2755,7 @@
       {
         "label": "iPad Air 2",
         "rank": 4,
-        "link": " http://twitter.com/search?q=%22iPad+Air+2%22"
+        "link": "http://twitter.com/search?q=%22iPad+Air+2%22"
       },
       {
         "label": "#comeycrypto",
@@ -2969,7 +2969,7 @@
         "link": "http://trends.google.com/search?q=Royals"
       },
       {
-        " label": "Out Of The Woods",
+        "label": "Out Of The Woods",
         "rank": 10,
         "link": "http://trends.google.com/search?q=Out+Of+The+Woods"
       }
@@ -3824,7 +3824,7 @@
       {
         "label": "Gal Gadot",
         "rank": 7,
-        " link": "http://trends.google.com/search?q=Gal+Gadot"
+        "link": "http://trends.google.com/search?q=Gal+Gadot"
       },
       {
         "label": "Bet Hiphop Awards 2014",
@@ -4251,7 +4251,7 @@
         "link": "http://trends.google.com/search?q=Bosses+Day"
       },
       {
-        "label": " Ebola Airborne",
+        "label": "Ebola Airborne",
         "rank": 6,
         "link": "http://trends.google.com/search?q=Ebola+Airborne"
       },
@@ -4682,7 +4682,7 @@
       {
         "label": "Bosses Day",
         "rank": 5,
-        " link": "http://trends.google.com/search?q=Bosses+Day"
+        "link": "http://trends.google.com/search?q=Bosses+Day"
       },
       {
         "label": "Gal Gadot",
@@ -5543,7 +5543,7 @@
         "link": "http://trends.google.com/search?q=Nexus+6"
       },
       {
-        "label": " Ezra Miller",
+        "label": "Ezra Miller",
         "rank": 4,
         "link": "http://trends.google.com/search?q=Ezra+Miller"
       },
@@ -5749,7 +5749,7 @@
         "link": "http://twitter.com/search?q=%22Lord+Freud%22"
       },
       {
-        "label": " iMac",
+        "label": "iMac",
         "rank": 8,
         "link": "http://twitter.com/search?q=iMac"
       },
@@ -6178,7 +6178,7 @@
         "link": "http://twitter.com/search?q=%23CDNOpenDay"
       },
       {
-        " label": "Lord Freud",
+        "label": "Lord Freud",
         "rank": 7,
         "link": "http://twitter.com/search?q=%22Lord+Freud%22"
       },
@@ -6823,7 +6823,7 @@
     "_id": {
       "$oid": "544014ca45ce8db6a14dfb0c"
     },
-    "source": " Google",
+    "source": "Google",
     "timestamp": {
       "$date": 1413485770625
     },
@@ -7028,7 +7028,7 @@
       {
         "label": "#thingsthatwillhappenbeforethezalfieannouncement",
         "rank": 3,
-        "link": " http://twitter.com/search?q=%23thingsthatwillhappenbeforethezalfieannouncement"
+        "link": "http://twitter.com/search?q=%23thingsthatwillhappenbeforethezalfieannouncement"
       },
       {
         "label": "#WorldFoodDay",
@@ -7447,7 +7447,7 @@
     "timestamp": {
       "$date": 1413486374000
     },
-    " location": "London, United Kingdom",
+    "location": "London, United Kingdom",
     "trends": [
       {
         "label": "#AppleEvent",
@@ -10652,7 +10652,7 @@
         "link": "http://twitter.com/search?q=%225K+iMac%22"
       },
       {
-        "label": " Lord Freud",
+        "label": "Lord Freud",
         "rank": 9,
         "link": "http://twitter.com/search?q=%22Lord+Freud%22"
       },
@@ -10870,7 +10870,7 @@
         "link": "http://twitter.com/search?q=%23NewZalfieHouse"
       },
       {
-        " label": "#CosasQueQuieroYaPeroYa",
+        "label": "#CosasQueQuieroYaPeroYa",
         "rank": 3,
         "link": "http://twitter.com/search?q=%23CosasQueQuieroYaPeroYa"
       },
@@ -11945,7 +11945,7 @@
       },
       {
         "label": "Everyman Theatre",
-        " rank": 7,
+        "rank": 7,
         "link": "http://twitter.com/search?q=%22Everyman+Theatre%22"
       },
       {
@@ -12380,7 +12380,7 @@
       {
         "label": "Anne Robinson",
         "rank": 7,
-        " link": "http://twitter.com/search?q=%22Anne+Robinson%22"
+        "link": "http://twitter.com/search?q=%22Anne+Robinson%22"
       },
       {
         "label": "Paul O'Grady",
@@ -13243,7 +13243,7 @@
       {
         "label": "Saving Private Ryan",
         "rank": 6,
-        " link": "http://twitter.com/search?q=%22Saving+Private+Ryan%22"
+        "link": "http://twitter.com/search?q=%22Saving+Private+Ryan%22"
       },
       {
         "label": "5K iMac",
@@ -13896,7 +13896,7 @@
       "$date": 1413490915000
     },
     "location": "Worldwide",
-    " trends": [
+    "trends": [
       {
         "label": "#CartersNewVideo",
         "rank": 1,
@@ -16662,7 +16662,7 @@
       },
       {
         "label": "Kobe",
-        " rank": 8,
+        "rank": 8,
         "link": "http://twitter.com/search?q=Kobe"
       },
       {
@@ -17306,7 +17306,7 @@
       "$date": 1413493035327
     },
     "location": "United Kingdom",
-    " trends": [
+    "trends": [
       {
         "label": "Elizabeth Pena",
         "rank": 1,
@@ -17516,7 +17516,7 @@
       {
         "label": "iPad Air 2",
         "rank": 5,
-        "link": " http://twitter.com/search?q=%22iPad+Air+2%22"
+        "link": "http://twitter.com/search?q=%22iPad+Air+2%22"
       },
       {
         "label": "Ebola",
@@ -17733,7 +17733,7 @@
   },
   {
     "_id": {
-      "$oid": " 5440325a45ce8db6a14dfbbc"
+      "$oid": "5440325a45ce8db6a14dfbbc"
     },
     "source": "Google",
     "timestamp": {
@@ -18374,7 +18374,7 @@
       {
         "label": "#rejectedpeanutsspecials",
         "rank": 3,
-        "link": " http://twitter.com/search?q=%23rejectedpeanutsspecials"
+        "link": "http://twitter.com/search?q=%23rejectedpeanutsspecials"
       },
       {
         "label": "#CartersNewVideo",
@@ -21831,7 +21831,7 @@
     "timestamp": {
       "$date": 1413496362000
     },
-    "location": "Washington,  United States",
+    "location": "Washington, United States",
     "trends": [
       {
         "label": "#MyLoveLifeIn3Words",
@@ -23344,7 +23344,7 @@
       {
         "label": "Ebola outbreak",
         "rank": 5,
-        " link": "http://trends.google.com/search?q=Ebola+outbreak"
+        "link": "http://trends.google.com/search?q=Ebola+outbreak"
       },
       {
         "label": "Nexus 6",
@@ -24418,7 +24418,7 @@
       {
         "label": "London",
         "rank": 9,
-        " link": "http://twitter.com/search?q=London"
+        "link": "http://twitter.com/search?q=London"
       },
       {
         "label": "iMac",
@@ -24847,7 +24847,7 @@
       {
         "label": "Yosemite",
         "rank": 8,
-        "link": " http://twitter.com/search?q=Yosemite"
+        "link": "http://twitter.com/search?q=Yosemite"
       },
       {
         "label": "London",
@@ -25279,7 +25279,7 @@
         "link": "http://twitter.com/search?q=%22Ming+Campbell%22"
       },
       {
-        "label": " Yosemite",
+        "label": "Yosemite",
         "rank": 8,
         "link": "http://twitter.com/search?q=Yosemite"
       },
@@ -25931,7 +25931,7 @@
         "link": "http://trends.google.com/search?q=Apple"
       },
       {
-        "label": " Cardinals",
+        "label": "Cardinals",
         "rank": 2,
         "link": "http://trends.google.com/search?q=Cardinals"
       },
@@ -27000,7 +27000,7 @@
         "link": "http://twitter.com/search?q=%22Jeremy+Hunt%22"
       },
       {
-        "label": " Angela Eagle",
+        "label": "Angela Eagle",
         "rank": 5,
         "link": "http://twitter.com/search?q=%22Angela+Eagle%22"
       },
@@ -28065,7 +28065,7 @@
       },
       {
         "label": "Smoothies & Bagels",
-        " rank": 7,
+        "rank": 7,
         "link": "http://twitter.com/search?q=%22Smoothies+%26+Bagels%22"
       },
       {
@@ -28699,7 +28699,7 @@
         "link": "http://twitter.com/search?q=%22Rafa+Guerrero%22"
       },
       {
-        "label": " MutirãoDirectioners",
+        "label": "MutirãoDirectioners",
         "rank": 10,
         "link": "http://twitter.com/search?q=Mutir%C3%A3oDirectioners"
       }
@@ -30220,7 +30220,7 @@
       },
       {
         "label": "#AskWesAndKeats",
-        " rank": 4,
+        "rank": 4,
         "link": "http://twitter.com/search?q=%23AskWesAndKeats"
       },
       {
@@ -31722,7 +31722,7 @@
         "link": "http://twitter.com/search?q=%22Ken+Dryden%22"
       },
       {
-        " label": "We Will Remember Damon and Elena",
+        "label": "We Will Remember Damon and Elena",
         "rank": 7,
         "link": "http://twitter.com/search?q=%22We+Will+Remember+Damon+and+Elena%22"
       },
@@ -32374,7 +32374,7 @@
     "location": "United States",
     "trends": [
       {
-        " label": "#MyLoveLifeIn3Words",
+        "label": "#MyLoveLifeIn3Words",
         "rank": 1,
         "link": "http://twitter.com/search?q=%23MyLoveLifeIn3Words"
       },
@@ -32799,7 +32799,7 @@
   },
   {
     "_id": {
-      "$oid": " 54405bb745ce8db6a14dfcaf"
+      "$oid": "54405bb745ce8db6a14dfcaf"
     },
     "source": "Twitter",
     "timestamp": {
@@ -33227,7 +33227,7 @@
       {
         "label": "Jon Gaunt",
         "rank": 10,
-        "link": " http://twitter.com/search?q=%22Jon+Gaunt%22"
+        "link": "http://twitter.com/search?q=%22Jon+Gaunt%22"
       }
     ]
   },
@@ -33661,7 +33661,7 @@
       {
         "label": "Saving Private Ryan",
         "rank": 10,
-        "link": " http://twitter.com/search?q=%22Saving+Private+Ryan%22"
+        "link": "http://twitter.com/search?q=%22Saving+Private+Ryan%22"
       }
     ]
   },
@@ -34308,7 +34308,7 @@
       {
         "label": "#MyLoveLifeIn3Words",
         "rank": 3,
-        " link": "http://twitter.com/search?q=%23MyLoveLifeIn3Words"
+        "link": "http://twitter.com/search?q=%23MyLoveLifeIn3Words"
       },
       {
         "label": "#LoDijeEnojado",
@@ -34948,7 +34948,7 @@
       {
         "label": "#ThisWeek",
         "rank": 7,
-        "link": " http://twitter.com/search?q=%23ThisWeek"
+        "link": "http://twitter.com/search?q=%23ThisWeek"
       },
       {
         "label": "#bbcqt",
@@ -35381,7 +35381,7 @@
       },
       {
         "label": "#ThisWeek",
-        " rank": 7,
+        "rank": 7,
         "link": "http://twitter.com/search?q=%23ThisWeek"
       },
       {
@@ -37340,7 +37340,7 @@
       },
       {
         "label": "#MyLoveLifeIn3Words",
-        " rank": 2,
+        "rank": 2,
         "link": "http://twitter.com/search?q=%23MyLoveLifeIn3Words"
       },
       {
@@ -37778,7 +37778,7 @@
         "link": "http://twitter.com/search?q=%23MyLoveLifeIn3Words"
       },
       {
-        " label": "#OsmanYzcİleHızlıTakiṕ",
+        "label": "#OsmanYzcİleHızlıTakiṕ",
         "rank": 3,
         "link": "http://twitter.com/search?q=%23OsmanYzc%C4%B0leH%C4%B1zl%C4%B1Taki%E1%B9%95"
       },
@@ -38217,7 +38217,7 @@
         "link": "http://twitter.com/search?q=%23MyLoveLifeIn3Words"
       },
       {
-        "label": " Beliebers 22h",
+        "label": "Beliebers 22h",
         "rank": 4,
         "link": "http://twitter.com/search?q=%22Beliebers+22h%22"
       },
@@ -39970,7 +39970,7 @@
       {
         "label": "#NYJvsNE",
         "rank": 7,
-        " link": "http://twitter.com/search?q=%23NYJvsNE"
+        "link": "http://twitter.com/search?q=%23NYJvsNE"
       },
       {
         "label": "Gol de Libertad",
@@ -40853,7 +40853,7 @@
       {
         "label": "MutirãoDirectioners",
         "rank": 10,
-        "link": " http://twitter.com/search?q=Mutir%C3%A3oDirectioners"
+        "link": "http://twitter.com/search?q=Mutir%C3%A3oDirectioners"
       }
     ]
   },
@@ -41293,7 +41293,7 @@
   },
   {
     "_id": {
-      " $oid": "5440735045ce8db6a14dfd38"
+      "$oid": "5440735045ce8db6a14dfd38"
     },
     "source": "Twitter",
     "timestamp": {
@@ -41518,7 +41518,7 @@
         "link": "http://twitter.com/search?q=%23AskCon"
       },
       {
-        " label": "#HOUvNE",
+        "label": "#HOUvNE",
         "rank": 7,
         "link": "http://twitter.com/search?q=%23HOUvNE"
       },
@@ -41733,7 +41733,7 @@
     "timestamp": {
       "$date": 1413510269000
     },
-    "location": "London, United  Kingdom",
+    "location": "London, United Kingdom",
     "trends": [
       {
         "label": "#MyLoveLifeIn3Words",
@@ -42619,7 +42619,7 @@
         "link": "http://twitter.com/search?q=Waterstones"
       },
       {
-        "label": " Lord Freud",
+        "label": "Lord Freud",
         "rank": 4,
         "link": "http://twitter.com/search?q=%22Lord+Freud%22"
       },
@@ -43502,7 +43502,7 @@
         "link": "http://twitter.com/search?q=%23crimewatch"
       },
       {
-        " label": "#PeakyBlinders",
+        "label": "#PeakyBlinders",
         "rank": 7,
         "link": "http://twitter.com/search?q=%23PeakyBlinders"
       },
@@ -43946,7 +43946,7 @@
         "link": "http://twitter.com/search?q=%23NewZalfieHouse"
       },
       {
-        " label": "Angela Eagle",
+        "label": "Angela Eagle",
         "rank": 9,
         "link": "http://twitter.com/search?q=%22Angela+Eagle%22"
       },
@@ -45270,7 +45270,7 @@
     "location": "Washington, United States",
     "trends": [
       {
-        "label": " Smelly Mellie",
+        "label": "Smelly Mellie",
         "rank": 1,
         "link": "http://twitter.com/search?q=%22Smelly+Mellie%22"
       },
@@ -46148,7 +46148,7 @@
         "link": "http://twitter.com/search?q=%23MyLoveLifeIn3Words"
       },
       {
-        " label": "#CapsDevils",
+        "label": "#CapsDevils",
         "rank": 3,
         "link": "http://twitter.com/search?q=%23CapsDevils"
       },
@@ -47265,7 +47265,7 @@
       },
       {
         "label": "Elizabeth Pena",
-        " rank": 3,
+        "rank": 3,
         "link": "http://trends.google.com/search?q=Elizabeth+Pena"
       },
       {
@@ -48367,7 +48367,7 @@
     "timestamp": {
       "$date": 1413514801000
     },
-    " location": "United Kingdom",
+    "location": "United Kingdom",
     "trends": [
       {
         "label": "#MyLoveLifeIn3Words",
@@ -49035,7 +49035,7 @@
         "link": "http://trends.google.com/search?q=Tower+of+London+poppies"
       },
       {
-        " label": "Michael McIntyre",
+        "label": "Michael McIntyre",
         "rank": 10,
         "link": "http://trends.google.com/search?q=Michael+McIntyre"
       }
@@ -50148,7 +50148,7 @@
       {
         "label": "London",
         "rank": 9,
-        "link": " http://twitter.com/search?q=London"
+        "link": "http://twitter.com/search?q=London"
       },
       {
         "label": "Amendola",
@@ -50602,7 +50602,7 @@
     "location": "United States",
     "trends": [
       {
-        " label": "#NYJvsNE",
+        "label": "#NYJvsNE",
         "rank": 1,
         "link": "http://twitter.com/search?q=%23NYJvsNE"
       },
@@ -51263,7 +51263,7 @@
       },
       {
         "label": "Erin Andrews",
-        " rank": 9,
+        "rank": 9,
         "link": "http://twitter.com/search?q=%22Erin+Andrews%22"
       },
       {
@@ -51715,7 +51715,7 @@
     "timestamp": {
       "$date": 1413517218000
     },
-    " location": "London, United Kingdom",
+    "location": "London, United Kingdom",
     "trends": [
       {
         "label": "#bbcqt",
@@ -52162,7 +52162,7 @@
         "link": "http://twitter.com/search?q=%23MyLoveLifeIn3Words"
       },
       {
-        "label": " Jeremy Hunt",
+        "label": "Jeremy Hunt",
         "rank": 3,
         "link": "http://twitter.com/search?q=%22Jeremy+Hunt%22"
       },
@@ -53288,7 +53288,7 @@
         "link": "http://trends.google.com/search?q=Elizabeth+Pena"
       },
       {
-        "label": " Apple",
+        "label": "Apple",
         "rank": 5,
         "link": "http://trends.google.com/search?q=Apple"
       },
@@ -54390,7 +54390,7 @@
       },
       {
         "label": "#NYJvsNE",
-        " rank": 2,
+        "rank": 2,
         "link": "http://twitter.com/search?q=%23NYJvsNE"
       },
       {
@@ -54835,7 +54835,7 @@
       {
         "label": "Wacha",
         "rank": 4,
-        "link": " http://twitter.com/search?q=Wacha"
+        "link": "http://twitter.com/search?q=Wacha"
       },
       {
         "label": "#RuinTechnology",
@@ -55277,7 +55277,7 @@
         "link": "http://twitter.com/search?q=Wacha"
       },
       {
-        " label": "Jets",
+        "label": "Jets",
         "rank": 6,
         "link": "http://twitter.com/search?q=Jets"
       },
@@ -56370,7 +56370,7 @@
       {
         "label": "Great Fire of London",
         "rank": 1,
-        "link": " http://trends.google.com/search?q=Great+Fire+of+London"
+        "link": "http://trends.google.com/search?q=Great+Fire+of+London"
       },
       {
         "label": "Elizabeth Pena",
@@ -56809,7 +56809,7 @@
       {
         "label": "Elizabeth Pena",
         "rank": 2,
-        "link": " http://trends.google.com/search?q=Elizabeth+Pena"
+        "link": "http://trends.google.com/search?q=Elizabeth+Pena"
       },
       {
         "label": "Chloe Madeley",
@@ -57246,7 +57246,7 @@
         "link": "http://trends.google.com/search?q=Elizabeth+Pena"
       },
       {
-        " label": "Chloe Madeley",
+        "label": "Chloe Madeley",
         "rank": 3,
         "link": "http://trends.google.com/search?q=Chloe+Madeley"
       },
@@ -57457,7 +57457,7 @@
         "link": "http://twitter.com/search?q=Jets"
       },
       {
-        " label": "Geno",
+        "label": "Geno",
         "rank": 8,
         "link": "http://twitter.com/search?q=Geno"
       },
@@ -60329,7 +60329,7 @@
     "_id": {
       "$oid": "5440a73e45ce8db6a14dfe6b"
     },
-    "source": " Twitter",
+    "source": "Twitter",
     "timestamp": {
       "$date": 1413523260000
     },
@@ -61003,7 +61003,7 @@
       {
         "label": "Halloween",
         "rank": 10,
-        "link": " http://twitter.com/search?q=Halloween"
+        "link": "http://twitter.com/search?q=Halloween"
       }
     ]
   },
@@ -61896,7 +61896,7 @@
         "link": "http://twitter.com/search?q=%23TurnUpWithCarter"
       },
       {
-        " label": "#RuinTechnology",
+        "label": "#RuinTechnology",
         "rank": 3,
         "link": "http://twitter.com/search?q=%23RuinTechnology"
       },
@@ -62342,7 +62342,7 @@
       {
         "label": "Double OT",
         "rank": 5,
-        " link": "http://twitter.com/search?q=%22Double+OT%22"
+        "link": "http://twitter.com/search?q=%22Double+OT%22"
       },
       {
         "label": "#LAKvsSTL",
@@ -63235,7 +63235,7 @@
       {
         "label": "Jeepers Creepers 2",
         "rank": 10,
-        " link": "http://twitter.com/search?q=%22Jeepers+Creepers+2%22"
+        "link": "http://twitter.com/search?q=%22Jeepers+Creepers+2%22"
       }
     ]
   },
@@ -63451,7 +63451,7 @@
         "link": "http://twitter.com/search?q=%22Jeremy+Hunt%22"
       },
       {
-        "label": " Waterstones",
+        "label": "Waterstones",
         "rank": 4,
         "link": "http://twitter.com/search?q=Waterstones"
       },
@@ -66553,7 +66553,7 @@
       {
         "label": "Jets",
         "rank": 4,
-        "link": " http://twitter.com/search?q=Jets"
+        "link": "http://twitter.com/search?q=Jets"
       },
       {
         "label": "#NYJvsNE",
@@ -66784,7 +66784,7 @@
     "location": "United Kingdom",
     "trends": [
       {
-        "label": " Great Fire of London",
+        "label": "Great Fire of London",
         "rank": 1,
         "link": "http://trends.google.com/search?q=Great+Fire+of+London"
       },
@@ -66991,7 +66991,7 @@
       },
       {
         "label": "#NYJvsNE",
-        " rank": 5,
+        "rank": 5,
         "link": "http://twitter.com/search?q=%23NYJvsNE"
       },
       {
@@ -67863,7 +67863,7 @@
         "link": "http://twitter.com/search?q=%23NYJvsNE"
       },
       {
-        " label": "#Scandal",
+        "label": "#Scandal",
         "rank": 6,
         "link": "http://twitter.com/search?q=%23Scandal"
       },
@@ -70034,7 +70034,7 @@
       },
       {
         "label": "#Scandal",
-        " rank": 6,
+        "rank": 6,
         "link": "http://twitter.com/search?q=%23Scandal"
       },
       {
@@ -70261,7 +70261,7 @@
         "link": "http://trends.google.com/search?q=Great+Fire+of+London"
       },
       {
-        " label": "Elizabeth Pena",
+        "label": "Elizabeth Pena",
         "rank": 2,
         "link": "http://trends.google.com/search?q=Elizabeth+Pena"
       },
@@ -71345,7 +71345,7 @@
         "link": "http://twitter.com/search?q=Fitz"
       },
       {
-        "label": " Geno",
+        "label": "Geno",
         "rank": 8,
         "link": "http://twitter.com/search?q=Geno"
       },
@@ -73099,7 +73099,7 @@
   },
   {
     "_id": {
-      "$oid": " 5440c97645ce8db6a14dff39"
+      "$oid": "5440c97645ce8db6a14dff39"
     },
     "source": "Twitter",
     "timestamp": {

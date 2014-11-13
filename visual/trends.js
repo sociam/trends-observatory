@@ -1,21 +1,9 @@
 // Various accessors that specify the four dimensions of data to visualize.
 function x(d) { return d.bar; }
 function y(d) { return d.rank ; }
-function radius(d) { return d.rank; }
+function radius(d) { return d.radius; }
 function color(d) { return d.topic; }
-function key(d) { return d.label; }
-
-  // function interpolateTime(start, end) {
-  //   return function(t) {
-  //     var intervals = Math.ceil(Math.abs(end.getTime() - start.getTime()) / 1000); 
-  //     var ms = start.getTime() + (1000 * ((1-t) + t*intervals));
-  //     return new Date(ms);
-  //   };
-  // }
-
-  // console.log(interpolateTime(new Date("2014-10-01"), new Date())(0.499));
-  // console.log(new Date(d3.interpolateNumber(new Date("2014-10-01"), new Date())(0.499)));
-
+function key(d) { return d.timestamp; }
 
 // Chart dimensions.
 var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
@@ -23,14 +11,14 @@ var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
     height = 500 - margin.top - margin.bottom;
 
 // Various scales. These domains make assumptions of data, naturally.
-var xScale = d3.scale.linear().domain([1, 10]).range([0, width]),
-    yScale = d3.scale.linear().domain([1, 10]).range([height, 0]),
-    radiusScale = d3.scale.sqrt().domain([0, 100]).range([0, 100]),
+var xScale = d3.scale.linear().domain([0, 10]).range([0, width]),
+    yScale = d3.scale.linear().domain([11, 0]).range([height, 0]),
+    radiusScale = d3.scale.sqrt().domain([0, 10]).range([0, 20]),
     colorScale = d3.scale.category10();
 
 // The x & y axes.
-var xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(12, d3.format(",d")),
-    yAxis = d3.svg.axis().scale(yScale).orient("left");
+var xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(11).tickFormat(barName),
+    yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(12).tickFormat(function(d) { if (d<11 && d>0) return d; return ""; });
 
 // Create the SVG container and set the origin.
 var svg = d3.select("#chart").append("svg")
@@ -56,7 +44,7 @@ svg.append("text")
     .attr("text-anchor", "end")
     .attr("x", width)
     .attr("y", height - 6)
-    .text("System (and location)");
+    .text("Source (and location)");
 
 // Add a y-axis label.
 svg.append("text")
@@ -73,7 +61,118 @@ var label = svg.append("text")
     .attr("text-anchor", "end")
     .attr("y", height - 24)
     .attr("x", width)
-    .text(2014);
+    .text(formatDate(new Date()));
+
+function getMonthName(month, short) {
+  switch(month) {
+    case 0:
+      if (short) return "Jan";
+      return "January";
+    case 1:
+      if (short) return "Feb";
+      return "February";
+    case 2:
+      if (short) return "Mar";
+      return "March";
+    case 3:
+      if (short) return "Apr";
+      return "April";
+    case 4:
+      return "May";
+    case 5:
+      if (short) return "Jun";
+      return "June";
+    case 6:
+      if (short) return "Jul";
+      return "July";
+    case 7:
+      if (short) return "Aug";
+      return "August";
+    case 8:
+      if (short) return "Sep";
+      return "September";
+    case 9:
+      if (short) return "Oct";
+      return "October";
+    case 10:
+      if (short) return "Nov";
+      return "November";
+    case 11:
+      if (short) return "Dec";
+      return "December";
+  }
+}
+
+function padZero(x) {
+  if (x>=0 && x<10) {
+    return "0"+x;
+  }
+  return x;
+}
+
+function formatDate(d) {
+  return padZero(d.getDate())+" "+getMonthName(d.getMonth(), true)+" "+padZero(d.getHours())+":"+padZero(d.getMinutes());
+}
+
+function barId(source, location) {
+  switch(source.trim()) {
+    case "Twitter": 
+      switch(location.trim()) {
+        case "Worldwide":
+          return 1;
+        case "United Kingdom":
+          return 2;
+        case "United States":
+          return 3;
+        case "London, United Kingdom":
+          return 4;
+        case "Washington, United States":
+          return 5;
+      }
+    case "Yahoo":
+      switch(location.trim()) {
+        case "United Kingdom":
+          return 6;
+        case "United States":
+          return 7;
+      }
+    case "Google":
+      switch(location.trim()) {
+        case "United Kingdom":
+          return 8;
+        case "United States":
+          return 9;
+      }
+    default:
+      console.log("weird looking source or location: ", source, location);
+      return 10;
+  }
+}
+
+function barName(barId) {
+  switch(barId) {
+    case 1:
+      return "Twitter (Worldwide)";
+    case 2:
+      return "Twitter (UK)";
+    case 3:
+      return "Twitter (US)";
+    case 4:
+      return "Twitter (London)";
+    case 5:
+      return "Twitter (Washington)";
+    case 6:
+      return "Yahoo (UK)";
+    case 7:
+      return "Yahoo (US)";
+    case 8:
+      return "Google (UK)";
+    case 9:
+      return "Google (US)";
+    default:
+      return "";
+  }
+}
 
 // Load the data.
 d3.json("trends.json", function(trends) {
@@ -94,7 +193,7 @@ d3.json("trends.json", function(trends) {
 
   // Add a title.
   dot.append("title")
-      .text(function(d) { return d.name; });
+      .text(function(d) { return d.label; });
 
   // Add an overlay for the year label.
   var box = label.node().getBBox();
@@ -104,14 +203,14 @@ d3.json("trends.json", function(trends) {
         .attr("x", box.x)
         .attr("y", box.y)
         .attr("width", box.width)
-        .attr("height", box.height)
-        .on("mouseover", enableInteraction);
+        .attr("height", box.height);
+        // .on("mouseover", enableInteraction);
 
   // Start a transition that interpolates the data based on year.
   svg.transition()
-      .duration(30000)
+      .duration(576000)
       .ease("linear")
-      .tween("year", tweenInterval)
+      .tween("interval", tweenInterval)
       .each("end", enableInteraction);
 
   // Positions the dots based on data.
@@ -123,7 +222,7 @@ d3.json("trends.json", function(trends) {
 
   // Defines a sort order so that the smallest dots are drawn on top.
   function order(a, b) {
-    return radius(b) - radius(a);
+    return timestamp(b) - timestamp(a);
   }
 
   // After the transition finishes, you can mouseover to change the year.
@@ -158,62 +257,46 @@ d3.json("trends.json", function(trends) {
   // Tweens thetrends entire chart by first tweening the year, and then the data.
   // For the interpolated data, the dots and label are redrawn.
   function tweenInterval() {
-    var time = d3.interpolateNumber(new Date("2014-10-16"), new Date());
-    return function(t) { displayInterval(new Date(time(t))); };
+    var interval = d3.interpolateNumber(new Date("2014-10-16"), new Date());
+    console.log(interval);
+    return function(t) { console.log("called the tween with t ", t); displayInterval(interval(t)); };
   }
 
-  // Updates the display to show the specified year.
-  function displayInterval(time) {
-    console.log(time);
-    dot.data(interpolateData(time), key).call(position).sort(order);
-    label.text(new Date(time));
+  // Updates the display to show the specified interval.
+  function displayInterval(inter) {
+    var d = new Date(inter);
+    d.setMinutes(d.getMinutes() - (d.getMinutes() % 5));
+    d.setSeconds(0);
+    d.setMilliseconds(0);
+    dot.data(interpolateData(d), key).call(position).sort(order);
+    label.text(formatDate(d));
   }
+
 
   // Interpolates the dataset for the given timestamp's 5min interval.
   function interpolateData(time) {
-    // get the interval
+    console.log("interpolating on ", time);
     return trends.map(function(d) {
-      return {
-        bar: barId(d.source, d.location),
-        rank: 5, //d.rank,
-        label: d.label,  //interpolateValues(d.income, year),
-        topic: findTopic(d.label),
-      };
-    });
-  }
-
-  function barId(source, location) {
-    switch(source) {
-      case "Twitter": 
-        switch(location) {
-          case "Worldwide":
-            return 1;
-          case "United Kingdom":
-            return 2;
-          case "United States":
-            return 3;
-          case "London, United Kingdom":
-            return 4;
-          case "Washington, United States":
-            return 5;
-        }
-      case "Yahoo":
-        switch(location) {
-          case "United Kingdom":
-            return 6;
-          case "United States":
-            return 7;
-        }
-      case "Google":
-        switch(location) {
-          case "United Kingdom":
-            return 8;
-          case "United States":
-            return 9;
-        }
-      default:
-        return 0;
-    }
+      var ts = new Date(d.timestamp['$date']);
+      ts.setMinutes(ts.getMinutes() - (ts.getMinutes() % 5));
+      ts.setSeconds(0);
+      ts.setMilliseconds(0);
+      // if (ts === time) {
+        // console.log(ts,time);
+        return d.trends.map(function(t) {
+          return {
+            bar: barId(d.source, d.location),
+            rank: t.rank, 
+            radius: 11-t.rank, 
+            label: t.label,  //interpolateValues(d.income, year),
+            topic: findTopic(t.label),
+            timestamp: ts,
+          };
+        });
+      // }
+    }).reduce(function(a, b) {
+      return a.concat(b);
+    }, []);
   }
 
   function findTopic(label) {
