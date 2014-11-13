@@ -1,9 +1,9 @@
 // Various accessors that specify the four dimensions of data to visualize.
-function x(d) { return d.income; }
-function y(d) { return d.lifeExpectancy; }
-function radius(d) { return d.population; }
-function color(d) { return d.region; }
-function key(d) { return d.name; }
+function x(d) { return d.sourcelocation; }
+function y(d) { return d.rank ; }
+function radius(d) { return d.rank; }
+function color(d) { return d.topic; }
+function key(d) { return d.label; }
 
 // Chart dimensions.
 var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
@@ -11,7 +11,43 @@ var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
     height = 500 - margin.top - margin.bottom;
 
 // Various scales. These domains make assumptions of data, naturally.
-var xScale = d3.scale.log().domain([300, 1e5]).range([0, width]),
+var xScale = #chart {
+  margin-left: -40px;
+  height: 506px;
+}
+
+text {
+  font: 10px sans-serif;
+}
+
+.dot {
+  stroke: #000;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.label {
+  fill: #777;
+}
+
+.year.label {
+  font: 500 196px "Helvetica Neue";
+  fill: #ddd;
+}
+
+.year.label.active {
+  fill: #aaa;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+  cursor: ew-resize;
+}d3.scale.log().domain([300, 1e5]).range([0, width]),
     yScale = d3.scale.linear().domain([10, 85]).range([height, 0]),
     radiusScale = d3.scale.sqrt().domain([0, 5e8]).range([0, 40]),
     colorScale = d3.scale.category10();
@@ -44,7 +80,7 @@ svg.append("text")
     .attr("text-anchor", "end")
     .attr("x", width)
     .attr("y", height - 6)
-    .text("income per capita, inflation-adjusted (dollars)");
+    .text("System (and location)");
 
 // Add a y-axis label.
 svg.append("text")
@@ -53,7 +89,7 @@ svg.append("text")
     .attr("y", 6)
     .attr("dy", ".75em")
     .attr("transform", "rotate(-90)")
-    .text("life expectancy (years)");
+    .text("Rank");
 
 // Add the year label; the value is set on transition.
 var label = svg.append("text")
@@ -61,10 +97,10 @@ var label = svg.append("text")
     .attr("text-anchor", "end")
     .attr("y", height - 24)
     .attr("x", width)
-    .text(1800);
+    .text(2014);
 
 // Load the data.
-d3.json("nations.json", function(nations) {
+d3.json("smalltrends.json", function(trends) {
 
   // A bisector since many nation's data is sparsely-defined.
   var bisect = d3.bisector(function(d) { return d[0]; });
@@ -156,15 +192,14 @@ d3.json("nations.json", function(nations) {
     label.text(Math.round(year));
   }
 
-  // Interpolates the dataset for the given (fractional) year.
-  function interpolateData(year) {
-    return nations.map(function(d) {
+  // Interpolates the dataset for the given timestamp + 5min.
+  function interpolateData(timestamp) {
+    return trends.map(function(d) {
       return {
-        name: d.name,
-        region: d.region,
-        income: interpolateValues(d.income, year),
-        population: interpolateValues(d.population, year),
-        lifeExpectancy: interpolateValues(d.lifeExpectancy, year)
+        sourcelocation: d.source+" ("+d.location+")",
+        rank: d.rank,
+        label: d.label,  //interpolateValues(d.income, year),
+        topic: findTopic(d.label),
       };
     });
   }
