@@ -1,21 +1,20 @@
 // Various accessors that specify the four dimensions of data to visualize.
-function x(d) { return d.sourcelocation; }
+function x(d) { return d.bar; }
 function y(d) { return d.rank ; }
 function radius(d) { return d.rank; }
 function color(d) { return d.topic; }
 function key(d) { return d.label; }
 
-  function interpolateTime5(start, end) {
-    return function(t) {
-      var intervals = Math.ceil(Math.abs(end.getTime() - start.getTime()) / (1000 * 300)); 
-      var ms = start.getTime() + (1000 * 300 * ((1-t) + t*intervals));
-      return new Date(ms);
-    };
-  }
+  // function interpolateTime(start, end) {
+  //   return function(t) {
+  //     var intervals = Math.ceil(Math.abs(end.getTime() - start.getTime()) / 1000); 
+  //     var ms = start.getTime() + (1000 * ((1-t) + t*intervals));
+  //     return new Date(ms);
+  //   };
+  // }
 
-  console.log(interpolateTime5(new Date("2014-10-01"),new Date("2014-11-14"))(0.001));
-
-
+  // console.log(interpolateTime(new Date("2014-10-01"), new Date())(0.499));
+  // console.log(new Date(d3.interpolateNumber(new Date("2014-10-01"), new Date())(0.499)));
 
 
 // Chart dimensions.
@@ -24,9 +23,9 @@ var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
     height = 500 - margin.top - margin.bottom;
 
 // Various scales. These domains make assumptions of data, naturally.
-var xScale = d3.scale.log().domain([300, 1e5]).range([0, width]),
-    yScale = d3.scale.linear().domain([10, 85]).range([height, 0]),
-    radiusScale = d3.scale.sqrt().domain([0, 5e8]).range([0, 40]),
+var xScale = d3.scale.linear().domain([1, 10]).range([0, width]),
+    yScale = d3.scale.linear().domain([1, 10]).range([height, 0]),
+    radiusScale = d3.scale.sqrt().domain([0, 100]).range([0, 100]),
     colorScale = d3.scale.category10();
 
 // The x & y axes.
@@ -37,7 +36,7 @@ var xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(12, d3.format(",d
 var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g")
+    .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // Add the x-axis.
@@ -80,14 +79,14 @@ var label = svg.append("text")
 d3.json("trends.json", function(trends) {
 
   // A bisector since many nation's data is sparsely-defined.
-  var bisect = d3.bisector(function(d) { return d[0]; });
+  // var bisect = d3.bisector(function(d) { return d[0]; });
 
   // Add a dot per nation. Initialize the data at 1800, and set the colors.
   var dot = svg.append("g")
       .attr("class", "dots")
-    .selectAll(".dot")
-      .data(interpolateData(1800))
-    .enter().append("circle")
+      .selectAll(".dot")
+      .data(interpolateData(new Date("2014-10-16")))
+      .enter().append("circle")
       .attr("class", "dot")
       .style("fill", function(d) { return colorScale(color(d)); })
       .call(position)
@@ -112,7 +111,7 @@ d3.json("trends.json", function(trends) {
   svg.transition()
       .duration(30000)
       .ease("linear")
-      .tween("year", tweenYear)
+      .tween("year", tweenInterval)
       .each("end", enableInteraction);
 
   // Positions the dots based on data.
@@ -130,7 +129,7 @@ d3.json("trends.json", function(trends) {
   // After the transition finishes, you can mouseover to change the year.
   function enableInteraction() {
     var yearScale = d3.scale.linear()
-        .domain([1800, 2009])
+        .domain([new Date("2014-10-16"), new Date()])
         .range([box.x + 10, box.x + box.width - 10])
         .clamp(true);
 
@@ -152,37 +151,75 @@ d3.json("trends.json", function(trends) {
     }
 
     function mousemove() {
-      displayYear(yearScale.invert(d3.mouse(this)[0]));
+      displayInterval(yearScale.invert(d3.mouse(this)[0]));
     }
   }
 
-  // Tweens the entire chart by first tweening the year, and then the data.
+  // Tweens thetrends entire chart by first tweening the year, and then the data.
   // For the interpolated data, the dots and label are redrawn.
-  function tweenYear() {
-    var year = d3.interpolateNumber(1800, 2009);
-    return function(t) { displayYear(year(t)); };
+  function tweenInterval() {
+    var time = d3.interpolateNumber(new Date("2014-10-16"), new Date());
+    return function(t) { displayInterval(new Date(time(t))); };
   }
 
   // Updates the display to show the specified year.
-  function displayYear(year) {
-    dot.data(interpolateData(year), key).call(position).sort(order);
-    label.text(Math.round(year));
+  function displayInterval(time) {
+    console.log(time);
+    dot.data(interpolateData(time), key).call(position).sort(order);
+    label.text(new Date(time));
   }
 
-  // Interpolates the dataset for the given timestamp + 5min.
-  // d3.interpolators.push(interpolateTime5)''
-  // start, end are dates "yyyy-mm-dd"
-
-  function interpolateData(year) {
+  // Interpolates the dataset for the given timestamp's 5min interval.
+  function interpolateData(time) {
+    // get the interval
     return trends.map(function(d) {
       return {
-        sourcelocation: d.source+" ("+d.location+")",
-        rank: d.rank,
+        bar: barId(d.source, d.location),
+        rank: 5, //d.rank,
         label: d.label,  //interpolateValues(d.income, year),
         topic: findTopic(d.label),
       };
     });
   }
+
+  function barId(source, location) {
+    switch(source) {
+      case "Twitter": 
+        switch(location) {
+          case "Worldwide":
+            return 1;
+          case "United Kingdom":
+            return 2;
+          case "United States":
+            return 3;
+          case "London, United Kingdom":
+            return 4;
+          case "Washington, United States":
+            return 5;
+        }
+      case "Yahoo":
+        switch(location) {
+          case "United Kingdom":
+            return 6;
+          case "United States":
+            return 7;
+        }
+      case "Google":
+        switch(location) {
+          case "United Kingdom":
+            return 8;
+          case "United States":
+            return 9;
+        }
+      default:
+        return 0;
+    }
+  }
+
+  function findTopic(label) {
+    // for now this is the default, no topic detection 
+    return label;
+  } 
 
   // Finds (and possibly interpolates) the value for the specified year.
   function interpolateValues(values, year) {
