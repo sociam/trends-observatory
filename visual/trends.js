@@ -5,49 +5,26 @@ function radius(d) { return d.rank; }
 function color(d) { return d.topic; }
 function key(d) { return d.label; }
 
+  function interpolateTime5(start, end) {
+    return function(t) {
+      var intervals = Math.ceil(Math.abs(end.getTime() - start.getTime()) / (1000 * 300)); 
+      var ms = start.getTime() + (1000 * 300 * ((1-t) + t*intervals));
+      return new Date(ms);
+    };
+  }
+
+  console.log(interpolateTime5(new Date("2014-10-01"),new Date("2014-11-14"))(0.001));
+
+
+
+
 // Chart dimensions.
 var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
     width = 960 - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 // Various scales. These domains make assumptions of data, naturally.
-var xScale = #chart {
-  margin-left: -40px;
-  height: 506px;
-}
-
-text {
-  font: 10px sans-serif;
-}
-
-.dot {
-  stroke: #000;
-}
-
-.axis path, .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.label {
-  fill: #777;
-}
-
-.year.label {
-  font: 500 196px "Helvetica Neue";
-  fill: #ddd;
-}
-
-.year.label.active {
-  fill: #aaa;
-}
-
-.overlay {
-  fill: none;
-  pointer-events: all;
-  cursor: ew-resize;
-}d3.scale.log().domain([300, 1e5]).range([0, width]),
+var xScale = d3.scale.log().domain([300, 1e5]).range([0, width]),
     yScale = d3.scale.linear().domain([10, 85]).range([height, 0]),
     radiusScale = d3.scale.sqrt().domain([0, 5e8]).range([0, 40]),
     colorScale = d3.scale.category10();
@@ -100,7 +77,7 @@ var label = svg.append("text")
     .text(2014);
 
 // Load the data.
-d3.json("smalltrends.json", function(trends) {
+d3.json("trends.json", function(trends) {
 
   // A bisector since many nation's data is sparsely-defined.
   var bisect = d3.bisector(function(d) { return d[0]; });
@@ -193,7 +170,10 @@ d3.json("smalltrends.json", function(trends) {
   }
 
   // Interpolates the dataset for the given timestamp + 5min.
-  function interpolateData(timestamp) {
+  // d3.interpolators.push(interpolateTime5)''
+  // start, end are dates "yyyy-mm-dd"
+
+  function interpolateData(year) {
     return trends.map(function(d) {
       return {
         sourcelocation: d.source+" ("+d.location+")",
@@ -216,4 +196,3 @@ d3.json("smalltrends.json", function(trends) {
     return a[1];
   }
 });
-
