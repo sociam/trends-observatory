@@ -1,11 +1,12 @@
 {
-  "name": "livementions-client",
+  "name": "trends-client",
   "version": "1.0.0",
-  "homepage": "https://github.com/sociam/livementions",
+  "homepage": "https://github.com/sociam/trending-topics",
   "authors": [
-    "Dr. Daniel A Smith <daniel@danielsmith.eu>"
+    "aprilush",
+    "m-l-r"
   ],
-  "description": "livementions",
+  "description": "trends",
   "main": "index.html",
   "license": "MIT",
   "ignore": [

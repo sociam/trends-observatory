@@ -14,16 +14,20 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/livementions.css">
     </head>
-    <body ng-app="bones" ng-controller="main">
-        <h1>Trending on the Web</h1>
+    <body ng-app="trends" ng-controller="main">
+        <h1>Trending on the Web (ToW)</h1>
         <div class="trends">
             <table class="stats">
                 <tr><td>Trending topics: </td><td class="value">foo</td></tr>
                 <tr><td>Cross-machine topics: </td><td class="value">bar</td></tr>
             </table>
-            <div class="rows">
-               <div class="row"></div>
-            </div>         
+            <div class="socmacs">
+                <div ng-repeat="sm in socmacs">
+                    <div ng-repeat="loc in sm.locations"> 
+                        <div class="trendlist">{{sm.name}}<br/>{{loc.name}}</div>
+                    </div>
+                </div>
+             </div>         
         </div>
 
         <script src="bower_components/less/dist/less.min.js"></script>
@@ -34,7 +38,7 @@
         <script src="bower_components/angular-socket-io/socket.min.js"></script>
         <script src="bower_components/d3/d3.min.js"></script>
         <script src="bower_components/paralleljs/lib/parallel.js"></script>
-        <script src="js/things.js"></script>
+        <script src="js/trends.js"></script>
         <script src="js/utils.js"></script>
     </body>
 </html>

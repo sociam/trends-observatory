@@ -1,39 +1,39 @@
 {
 'sources': [
 	{
-		'source': 'Twitter', 
+		'name': 'Twitter', 
 		'logo': '',
 		'locations': ['Worldwide', 'US', 'UK', 'London', 'Washington']
 	}, 
 	{
-		'source': 'Yahoo', 
+		'name': 'Yahoo', 
 		'logo': '',
 		'locations': ['US', 'UK']
 	}, 
 	{
-		'source': 'Google', 
+		'name': 'Google', 
 		'logo': '',
 		'locations': ['US', 'UK']
 	}],
 'locations': [
 	{
-		'location': 'Worldwide',
+		'name': 'Worldwide',
 		'logo': ''
 	},
 	{
-		'location': 'US',
+		'name': 'US',
 		'logo': ''
 	},
 	{
-		'location': 'UK',
+		'name': 'UK',
 		'logo': ''
 	},
 	{
-		'location': 'London',
+		'name': 'London',
 		'logo': ''
 	},
 	{
-		'location': 'Washington',
+		'name': 'Washington',
 		'logo': ''
 	}]
 }
