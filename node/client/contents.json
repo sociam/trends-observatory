@@ -15,25 +15,25 @@
 		"logo": "",
 		"locations": ["US", "UK"]
 	}],
-"locations": [
-	{
+"locations": {
+	"Worldwide": {
 		"name": "Worldwide",
 		"logo": ""
 	},
-	{
-		"name": "US",
+	"US": {
+		"name": "United States",
 		"logo": ""
 	},
-	{
-		"name": "UK",
+	"UK": {
+		"name": "United Kingdom",
 		"logo": ""
 	},
-	{
-		"name": "London",
+	"London": {
+		"name": "London, United Kingdom",
 		"logo": ""
 	},
-	{
-		"name": "Washington",
+	"Washington": {
+		"name": "Washington, United States",
 		"logo": ""
-	}]
+	}}
 }

@@ -14,9 +14,14 @@ angular.module('trends', ['btford.socket-io'])
             console.log("loading");
             $http.get("http://localhost:8080/contents.json").success(function(json) {
                 console.log(json); 
+                $scope.locations = json.locations;
                 $scope.socmacs = [];
                 for (source in json.sources) {
                     $scope.socmacs[source] = json.sources[source];
+                    for (loc in json.sources[source].locations) {
+                        $scope.socmacs[source].locations[loc] = $scope.locations[json.sources[source].locations[loc]];
+                    }
+
                 }
             });
         }
