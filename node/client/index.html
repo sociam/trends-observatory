@@ -22,18 +22,19 @@
                 <tr><td>Cross-machine topics: </td><td class="value">{{stats.cross}}</td></tr>
             </table>
             <div class="socmacs">
-                <div ng-repeat="sm in socmacs">
+                <div class="trendlist" ng-repeat="sm in socmacs">
                     <h2>{{sm.name}}</h2>
                     <div ng-repeat="loc in sm.locations"> 
-                        <h3>{{loc.name}}</h3> ( {{loc.trends.length}} )
-<!--                         <div class="trendlist">
- -->                             <!-- <table class="topics"> -->
-                        <div ng-repeat="tt in loc.trends"></div>
-<!--                                 <tr class="row" ng-repeat="t in sm.trends">
-                                    <td class="rank{{t.rank}}"><a href="{{t.link}}">t.label</a></td>
-                                </tr>
- -->                            <!-- </table> -->
-                         <!-- </div> -->
+                        <h3>{{loc.name}}</h3>
+                        <div ng-repeat="tt in loc.trends">
+                            <div ng-show="checkInterval(tt.timestamp)">
+                                <table class="topics">
+                                    <tr class="row" ng-repeat="t in tt.list">
+                                        <td class="rank{{t.rank}}"><a href="{{t.link}}">{{t.label}}</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
              </div>         

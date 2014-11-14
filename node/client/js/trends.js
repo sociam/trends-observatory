@@ -34,6 +34,31 @@ angular.module('trends', ['btford.socket-io'])
             return deferred.promise;
         }
 
-        loadMeta().then(loadData).then(function(sms) {console.log(sms);} );
+        $scope.checkInterval = function(ts) {
+            console.log("checking ", ts);
+            if ($scope.interval <= ts) {
+                if ($scope.interval+300000 > ts) {
+                    console.log("within interval");
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        function loopIntervals () {
+            console.log("start of interval is: ", $scope.interval);
+            setTimeout(function () {    
+                if ($scope.interval < (new Date()).valueOf()) {
+                    $scope.interval = $scope.interval+300000;
+                    loopIntervals();
+                }
+            }, 3000);
+        }
+
+        $scope.interval = new Date("2014-10-16").valueOf();
+        loadMeta().then(loadData).then(function(sms) {
+            console.log("loaded data: ", sms); 
+            loopIntervals();
+        });
+        
     });
