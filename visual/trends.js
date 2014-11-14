@@ -14,7 +14,7 @@ var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
 var xScale = d3.scale.linear().domain([0, 10]).range([0, width]),
     yScale = d3.scale.linear().domain([11, 0]).range([height, 0]),
     radiusScale = d3.scale.sqrt().domain([0, 10]).range([0, 20]),
-    colorScale = d3.scale.category10();
+    colorScale = d3.scale.category20b();
 
 // The x & y axes.
 var xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(11).tickFormat(barName),
