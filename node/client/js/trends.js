@@ -11,31 +11,29 @@ angular.module('trends', ['btford.socket-io'])
         });
 
         function loadMeta() {
-
+            var deferred = $q.defer();
             $.getJSON("contents.json").success(function(json) {
-                // console.log(json); 
-                $scope.locations = json.locations;
+                // console.log(json);
                 $scope.socmacs = json.sources;
-                for (source in json.sources) {
-                    for (loc in json.sources[source].locations) {
-                        $scope.socmacs[source].locations[loc] = $scope.locations[json.sources[source].locations[loc]];
-                    }
-                }
-                console.log($scope.socmacs);
-            });
+                deferred.resolve($scope.socmacs);
+            }).fail(function(e) {console.log("fail to load meta", e);});
+            return deferred.promise;
         }
 
-        function loadData() {
+        function loadData(socmacs) {
+            var deferred = $q.defer();
             $.getJSON("trends.json").success(function(json) {
                 // console.log(json);
                 for (tti in json) {
                     tt = json[tti];
-                    $scope.socmacs[tt.source].locations[tt.location]['trends'] = tt.trends;
+                    socmacs[tt.source].locations[tt.location].trends.push({"timestamp":tt.timestamp["$date"], "list":tt.trends});
                 }
+                $scope.socmacs = socmacs;
+                deferred.resolve($scope.socmacs);
             });
+            return deferred.promise;
         }
 
-        loadMeta();
-        loadData();
+        loadMeta().then(loadData).then(function(sms) {console.log(sms);} );
 
     });

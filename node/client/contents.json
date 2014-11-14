@@ -1,36 +1,67 @@
 {
-"sources": {
-	"Twitter": {
-		"logo": "",
-		"locations": ["Worldwide", "US", "UK", "London", "Washington"]
-	}, 
-	"Yahoo": {
-		"logo": "",
-		"locations": ["US", "UK"]
-	}, 
-	"Google": {
-		"logo": "",
-		"locations": ["US", "UK"]
-	}},
-"locations": {
-	"Worldwide": {
-		"name": "Worldwide",
-		"logo": ""
-	},
-	"US": {
-		"name": "United States",
-		"logo": ""
-	},
-	"UK": {
-		"name": "United Kingdom",
-		"logo": ""
-	},
-	"London": {
-		"name": "London, United Kingdom",
-		"logo": ""
-	},
-	"Washington": {
-		"name": "Washington, United States",
-		"logo": ""
-	}}
+  "sources": {
+    "Twitter": {
+      "name":"Twitter",
+      "logo": "",
+      "locations": {
+        "Worldwide": {
+          "name": "Worldwide",
+          "logo": "",
+          "trends": []
+        },
+        "United States": {
+          "name": "United States",
+          "logo": "",
+          "trends": []
+        },
+        "United Kingdom": {
+          "name": "United Kingdom",
+          "logo": "",
+          "trends": []
+        },
+        "London, United Kingdom": {
+          "name": "London, United Kingdom",
+          "logo": "",
+          "trends": []
+        },
+        "Washington, United States": {
+          "name": "Washington, United States",
+          "logo": "",
+          "trends": []
+        } 
+      }
+    },
+    "Yahoo": {
+      "name": "Yahoo",
+      "logo": "",
+      "locations": {
+        "United States": {
+          "name": "United States",
+          "logo": "",
+          "trends": []
+        },
+        "United Kingdom": {
+          "name": "United Kingdom",
+          "logo": "",
+          "trends": []
+        }
+      }
+    },
+    "Google": {
+      "name": "Google",
+      "logo": "",
+      "locations": {
+        "United States": {
+          "name": "United States",
+          "logo": "",
+          "trends": []
+        },
+        "United Kingdom": {
+          "name": "United Kingdom",
+          "logo": "",
+          "trends": []
+        }
+      }
+    }
+  }
 }

@@ -23,13 +23,17 @@
             </table>
             <div class="socmacs">
                 <div ng-repeat="sm in socmacs">
+                    <h2>{{sm.name}}</h2>
                     <div ng-repeat="loc in sm.locations"> 
-                        <div class="trendlist">{{sm.name}} - {{loc.name}}
-                            <table class="stats">
-                                <tr class="row" ng-repeat="t in sm.trends" ng-bind="t.text">
+                        <h3>{{loc.name}}</h3> ( {{loc.trends.length}} )
+<!--                         <div class="trendlist">
+ -->                             <!-- <table class="topics"> -->
+                        <div ng-repeat="tt in loc.trends"></div>
+<!--                                 <tr class="row" ng-repeat="t in sm.trends">
+                                    <td class="rank{{t.rank}}"><a href="{{t.link}}">t.label</a></td>
                                 </tr>
-                            </table>
-                        </div>
+ -->                            <!-- </table> -->
+                         <!-- </div> -->
                     </div>
                 </div>
              </div>         
