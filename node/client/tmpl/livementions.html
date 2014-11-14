@@ -1,0 +1,22 @@
+<div class="livementions">
+
+    <div class="countries">
+        <span ng-repeat="(countrycode, country) in countries" class="country">
+<!--            <input ng-attr-id="country.id" type="checkbox" ng-checked="country.checked" /><label ng-attr-for="country.id" ng-bind="country.name"></label> (<span ng-bind="country.count"></span>)
+-->
+            <span ng-bind="country.name" class="name"></span> (<span ng-bind="country.count" class="count"></span>)
+        </span>
+    </div>
+
+    <!--
+    <div class="tweets">
+        <div class="tweet" ng-repeat="t in tweets">
+            <div class="tw-user"><img ng-src="{{t.safe_thumb}}" /><span class="tw-name" ng-bind="t.user.name"></span><span class="tw-username">@<span ng-bind="t.user.screen_name"></span></span></div>
+            <div class="tw-text" ng-bind="t.text"></div>
+        </div>
+    </div>
+    -->
+
+    <div class="visual"></div>
+
+</div>
