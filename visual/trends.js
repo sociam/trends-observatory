@@ -222,7 +222,7 @@ d3.json("trends.json", function(trends) {
 
   // Defines a sort order so that the smallest dots are drawn on top.
   function order(a, b) {
-    return timestamp(b) - timestamp(a);
+    return key(a) - key(b);
   }
 
   // After the transition finishes, you can mouseover to change the year.
