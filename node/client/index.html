@@ -17,14 +17,19 @@
     <body ng-app="trends" ng-controller="main">
         <h1>Trending on the Web (ToW)</h1>
         <div class="trends">
-            <table class="stats">
-                <tr><td>Trending topics: </td><td class="value">foo</td></tr>
-                <tr><td>Cross-machine topics: </td><td class="value">bar</td></tr>
+            <table class="stats" ng-bind="stats">
+                <tr><td>Trending topics: </td><td class="value">{{stats.topics}}</td></tr>
+                <tr><td>Cross-machine topics: </td><td class="value">{{stats.cross}}</td></tr>
             </table>
             <div class="socmacs">
                 <div ng-repeat="sm in socmacs">
                     <div ng-repeat="loc in sm.locations"> 
-                        <div class="trendlist">{{sm.name}} - {{loc.name}}</div>
+                        <div class="trendlist">{{sm.name}} - {{loc.name}}
+                            <table class="stats">
+                                <tr class="row" ng-repeat="t in sm.trends" ng-bind="t.text">
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
              </div>         

@@ -10,7 +10,6 @@ angular.module('trends', ['btford.socket-io'])
             data = JSON.parse(data.data);
         });
 
-
         function loadMeta() {
             
             $.getJSON("contents.json").success(function(json) {
