@@ -10,9 +10,10 @@ angular.module('trends', ['btford.socket-io'])
             data = JSON.parse(data.data);
         });
 
-        var loadMeta = function() {
-            console.log("loading");
-            $http.get("http://localhost:8080/contents.json").success(function(json) {
+
+        function loadMeta() {
+            
+            $.getJSON("contents.json").success(function(json) {
                 console.log(json); 
                 $scope.locations = json.locations;
                 $scope.socmacs = [];
@@ -21,10 +22,19 @@ angular.module('trends', ['btford.socket-io'])
                     for (loc in json.sources[source].locations) {
                         $scope.socmacs[source].locations[loc] = $scope.locations[json.sources[source].locations[loc]];
                     }
-
                 }
             });
         }
 
+        function loadData() {
+            $.getJSON("trends.json").success(function(json) {
+                console.log(json);
+
+            });
+        }
+
         loadMeta();
+        console.log($scope.socmacs);       
+        loadData();
+
     });
