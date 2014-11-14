@@ -1,0 +1,39 @@
+{
+'sources': [
+	{
+		'source': 'Twitter', 
+		'logo': '',
+		'locations': ['Worldwide', 'US', 'UK', 'London', 'Washington']
+	}, 
+	{
+		'source': 'Yahoo', 
+		'logo': '',
+		'locations': ['US', 'UK']
+	}, 
+	{
+		'source': 'Google', 
+		'logo': '',
+		'locations': ['US', 'UK']
+	}],
+'locations': [
+	{
+		'location': 'Worldwide',
+		'logo': ''
+	},
+	{
+		'location': 'US',
+		'logo': ''
+	},
+	{
+		'location': 'UK',
+		'logo': ''
+	},
+	{
+		'location': 'London',
+		'logo': ''
+	},
+	{
+		'location': 'Washington',
+		'logo': ''
+	}]
+}
