@@ -1,20 +1,17 @@
 {
-"sources": [
-	{
-		"name": "Twitter", 
+"sources": {
+	"Twitter": {
 		"logo": "",
 		"locations": ["Worldwide", "US", "UK", "London", "Washington"]
 	}, 
-	{
-		"name": "Yahoo", 
+	"Yahoo": {
 		"logo": "",
 		"locations": ["US", "UK"]
 	}, 
-	{
-		"name": "Google", 
+	"Google": {
 		"logo": "",
 		"locations": ["US", "UK"]
-	}],
+	}},
 "locations": {
 	"Worldwide": {
 		"name": "Worldwide",
