@@ -22,12 +22,11 @@
                 <tr><td>Cross-machine topics: </td><td class="value">{{stats.cross}}</td></tr>
             </table>
             <div class="socmacs">
-                <div class="trendlist" ng-repeat="sm in socmacs">
-                    <h2>{{sm.name}}</h2>
-                    <div ng-repeat="loc in sm.locations"> 
-                        <h3>{{loc.name}}</h3>
+                <div ng-repeat="sm in socmacs">
+                    <div ng-repeat="loc in sm.locations" class="trendlist"> 
+                        <h2>{{sm.name}}</h2><h3>{{loc.name}}</h3>
                         <div ng-repeat="tt in loc.trends">
-                            <div ng-show="checkInterval(tt.timestamp)">
+                            <div ng-show="checkInterval(tt.timestamp)" ng-bind="{{interval}}" >
                                 <table class="topics">
                                     <tr class="row" ng-repeat="t in tt.list">
                                         <td class="rank{{t.rank}}"><a href="{{t.link}}">{{t.label}}</a></td>
@@ -37,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-             </div>         
+             </div>
         </div>
 
         <script src="bower_components/less/dist/less.min.js"></script>
