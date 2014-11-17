@@ -97,15 +97,56 @@ textarea {
    Author's custom styles
    ========================================================================== */
 .socmacs{
-    width: 900px;
+    /*width: 900px;*/
     margin: 0 auto;
 }
 
 .socmacs div.trendlist {
     float: left;
-    width: 300px;
+    /*width: 300px;*/
+    width: 30%;
+    text-align: center;
 }
 
+.socmacs div.trendlist .rank1 {
+    font-size: 3.1em;
+}
+
+.socmacs div.trendlist .rank2 {
+    font-size: 2.8em;
+}
+
+.socmacs div.trendlist .rank3 {
+    font-size: 2.5em;
+}
+
+.socmacs div.trendlist .rank4 {
+    font-size: 2.2em;
+}
+
+.socmacs div.trendlist .rank5 {
+    font-size: 1.9em;
+}
+
+.socmacs div.trendlist .rank6 {
+    font-size: 1.6em;
+}
+
+.socmacs div.trendlist .rank7 {
+    font-size: 1.3em;
+}
+
+.socmacs div.trendlist .rank8 {
+    font-size: 1em;
+}
+
+.socmacs div.trendlist .rank9 {
+    font-size: 0.7em;
+}
+
+.socmacs div.trendlist .rank10 {
+    font-size: 0.5em;
+}
 
 
 

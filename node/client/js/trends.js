@@ -1,14 +1,9 @@
 angular.module('trends', ['btford.socket-io']) 
     .controller('main', function($scope, $rootScope) { 
     }).run(function() {}).factory('mysocket', function (socketFactory) {
-        var myIoSocket = io.connect('http://localhost:3000/'),
-            socket = socketFactory({ ioSocket: myIoSocket });
+        var myIoSocket = io.connect('http://app-001.ecs.soton.ac.uk:9001'), socket = socketFactory({ ioSocket: myIoSocket });
         return socket;
     }).controller('main', function($scope, mysocket, $sce, $http, $q) { 
-        mysocket.addListener("trends_hose", function (data) {
-            console.log("trends", data);
-            data = JSON.parse(data.data);
-        });
 
         function loadMeta() {
             var deferred = $q.defer();
@@ -20,9 +15,9 @@ angular.module('trends', ['btford.socket-io'])
             return deferred.promise;
         }
 
-        function loadData(socmacs) {
+        function loadTrendsFromFile(socmacs, filename) {
             var deferred = $q.defer();
-            $.getJSON("trends.json").success(function(json) {
+            $.getJSON(filename).success(function(json) {
                 // console.log(json);
                 for (tti in json) {
                     tt = json[tti];
@@ -34,15 +29,25 @@ angular.module('trends', ['btford.socket-io'])
             return deferred.promise;
         }
 
+        function loadTrendsFromHose(socmacs, data) {
+            console.log(data);
+            // console.log(socmacs);
+            socmacs[data.source].locations[data.location].trends = []; //this is different from loading from file, because we reset the trends between loads
+            socmacs[data.source].locations[data.location].trends.push({"timestamp":data.timestamp["$date"], "list":data.trends});
+            $scope.socmacs = socmacs;
+            console.log($scope.socmacs);            
+        }
+
         $scope.checkInterval = function(ts) {
-            console.log("checking ", ts);
-            if ($scope.interval <= ts) {
-                if ($scope.interval+300000 > ts) {
-                    console.log("within interval");
-                    return true;
-                }
-            }
-            return false;
+            // console.log("checking ", ts);
+            // if ($scope.interval <= ts) {
+            //     if ($scope.interval+300000 > ts) {
+            //         console.log("within interval");
+            //         return true;
+            //     }
+            // }
+            // return false;
+            return true;
         }
 
         function loopIntervals () {
@@ -55,10 +60,15 @@ angular.module('trends', ['btford.socket-io'])
             }, 3000);
         }
 
-        $scope.interval = new Date("2014-10-16").valueOf();
-        loadMeta().then(loadData).then(function(sms) {
-            console.log("loaded data: ", sms); 
-            loopIntervals();
+        // $scope.interval = new Date("2014-10-16").valueOf();
+        loadMeta().then(function(sm) {
+            mysocket.addListener("trends", function (data) {
+                console.log("trends", data);
+                if (Object.getOwnPropertyNames(data).length > 0) {
+                    loadTrendsFromHose(sm, data);
+                    console.log("got new data: ", data, $scope.socmacs); 
+                }
+            });
+            console.log("added listener", sm);
         });
-        
     });
