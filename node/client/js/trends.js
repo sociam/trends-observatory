@@ -32,10 +32,31 @@ angular.module('trends', ['btford.socket-io'])
         function loadTrendsFromHose(socmacs, data) {
             console.log(data);
             // console.log(socmacs);
+            var old = [];
+            if (typeof socmacs[data.source].locations[data.location].trends !== "undefined" && socmacs[data.source].locations[data.location].trends.length > 0) {
+                socmacs[data.source].locations[data.location].trends[0].map(function(e) { old.push(e); });
+            }
             socmacs[data.source].locations[data.location].trends = []; //this is different from loading from file, because we reset the trends between loads
+            data.trends = computeDeltas(old, data.trends);
             socmacs[data.source].locations[data.location].trends.push({"timestamp":data.timestamp["$date"], "list":data.trends});
             $scope.socmacs = socmacs;
             console.log($scope.socmacs);            
+        }
+
+        function computeDeltas(oldT, newT) {
+            for (nt in newT) {
+                nt.delta = " *";
+                for (ot in oldT) {
+                    if (nt.label == ol.label) {
+                        nt.delta = nt.rank - ot.rank;
+                        if (nt.delta == 0) {
+                            nt.delta = "->";
+                        }
+                    }
+                }
+            }
+            console.log("added deltas");
+            return newT;
         }
 
         $scope.checkInterval = function(ts) {
@@ -50,15 +71,15 @@ angular.module('trends', ['btford.socket-io'])
             return true;
         }
 
-        function loopIntervals () {
-            console.log("start of interval is: ", $scope.interval);
-            setTimeout(function () {    
-                if ($scope.interval < (new Date()).valueOf()) {
-                    $scope.interval = $scope.interval+300000;
-                    loopIntervals();
-                }
-            }, 3000);
-        }
+        // function loopIntervals () {
+        //     console.log("start of interval is: ", $scope.interval);
+        //     setTimeout(function () {    
+        //         if ($scope.interval < (new Date()).valueOf()) {
+        //             $scope.interval = $scope.interval+300000;
+        //             loopIntervals();
+        //         }
+        //     }, 3000);
+        // }
 
         // $scope.interval = new Date("2014-10-16").valueOf();
         loadMeta().then(function(sm) {
