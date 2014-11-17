@@ -33,8 +33,11 @@ angular.module('trends', ['btford.socket-io'])
             console.log(data);
             // console.log(socmacs);
             var old = [];
-            if (typeof socmacs[data.source].locations[data.location].trends !== "undefined" && socmacs[data.source].locations[data.location].trends.length > 0) {
-                socmacs[data.source].locations[data.location].trends[0].map(function(e) { old.push(e); });
+            console.log((typeof socmacs[data.source].locations[data.location].trends), socmacs[data.source].locations[data.location].trends);
+            if (typeof socmacs[data.source].locations[data.location].trends !== 'undefined' && 
+                socmacs[data.source].locations[data.location].trends.length > 0 && 
+                typeof socmacs[data.source].locations[data.location].trends[0] !== 'underfined') {
+                socmacs[data.source].locations[data.location].trends[0].list.map(function(e) { old.push(e); });
             }
             socmacs[data.source].locations[data.location].trends = []; //this is different from loading from file, because we reset the trends between loads
             data.trends = computeDeltas(old, data.trends);
@@ -44,18 +47,33 @@ angular.module('trends', ['btford.socket-io'])
         }
 
         function computeDeltas(oldT, newT) {
-            for (nt in newT) {
-                nt.delta = " *";
-                for (ot in oldT) {
-                    if (nt.label == ol.label) {
-                        nt.delta = nt.rank - ot.rank;
-                        if (nt.delta == 0) {
-                            nt.delta = "->";
+            if (oldT.length > 0) {
+                console.log("oldT has data: ", oldT.length);
+                for (nti in newT) {
+                    var nt = newT[nti];
+                    console.log("new topic ", nt);
+                    nt['delta'] = " *";
+                    for (oti in oldT) {
+                        var ot = oldT[oti];
+                        console.log("old topic ", ot);
+                        if (nt.label === ot.label) {
+                            console.log("labels match ", nt, ot);
+                            nt.delta = ot.rank - nt.rank ;
+                            if (nt.delta == 0) {
+                                nt.delta = "->";
+                            }
                         }
                     }
                 }
+            } else {
+                for (nti in newT) {
+                    var nt = newT[nti];
+                    console.log("new topic ", nt);
+                    nt['delta'] = " *";
+                    console.log("new topic modif ", nt);
+                }
             }
-            console.log("added deltas");
+            console.log("added deltas ", oldT, newT);
             return newT;
         }
 
