@@ -100,95 +100,63 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-.socmacs{
-    /*width: 900px;*/
-    margin: 0 auto;
-    /*padding: 30px;*/
-    height:100%;
-    vertical-align:top;
-}
-.socmacs div {
-    vertical-align:top;
-    height:100%;
+.socmacs {
+    margin: 10px;
+    position: relative;
 }
 
-.socmacs div.trendlist {
-    display:inline-block;
-    height:100%;
-    margin:20px 30px 0px 0px;
-    padding:0px;
+.location {
+    display: inline-block;
+    vertical-align:top;
+    /*height: 100%;*/
+    margin: 10px;
+    padding: 10px 0px 10px 0px;
 }
-
-.rank  {
-    text-align:center;
-}
-.socmacs div.trendlist .rank1 {
-    font-size: 2.2em;
-}
-.socmacs div.trendlist .rank2 {
-    font-size: 2em;
-}
-.socmacs div.trendlist .rank3 {
-    font-size: 1.8em;
-}
-.socmacs div.trendlist .rank4 {
-    font-size: 1.6em;
-}
-.socmacs div.trendlist .rank5 {
-    font-size: 1.4em;
-}
-.socmacs div.trendlist .rank6 {
-    font-size: 1.3em;
-}
-.socmacs div.trendlist .rank7 {
-    font-size: 1.2em;
-}
-.socmacs div.trendlist .rank8 {
-    font-size: 1.1em;
-}
-.socmacs div.trendlist .rank9 {
-    font-size: 1em;
-}
-.socmacs div.trendlist .rank10 {
-    font-size: 0.9em;
+.location:before {
+    background-color: white;
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 390px;
+    height: 100%;
 }
 
 .topics {
-    width: 100%;
+    background-color: white;
+    padding: 20px 35px 20px 20px;
+    position: relative;
+    height: 100%;
     /*text-align: center;*/
 }
 
-.delta {
-    width: 16px;
-    height:16px;
+.rank  {
+    text-align: center;
+}
+.topiclabel {
+    width: 300px;
+    overflow: hidden;
+    padding-left: 10px;
 }
 
-.trendlist table .topiclabel {
-    width:300px;
-    padding-left:20px;
-}
-.trendlist div {
-    border-radius:8px;
-    position:relative;
-    padding:14px 38px 20px 20px;
-    height:100%;
-}
-.GoogleBg {
+.Google {
     background-color: rgba(221, 75, 57, 0.1);
     padding: 10px;
 }
-.YahooBg {
+.Yahoo {
     background-color: rgba(123, 0, 153, 0.1);
     padding: 10px;
 }
-.TwitterBg {
-    border: 1px solid rgba(64, 153, 266, 0.1);
+.Twitter {
+    /*border: 1px solid rgba(64, 153, 266, 0.1);*/
+    background-color: rgba(64, 153, 266, 0.1);
     padding: 10px;
 }
 
 .flag {
-    position:absolute;
-    right:14px; top:14px;
+    position: absolute;
+    right:16px; top:-12px;
     width:32px;
 }
 .us {
