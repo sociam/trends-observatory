@@ -112,6 +112,19 @@ angular.module('trends', ['btford.socket-io'])
             }
         }
 
+        $scope.flagPath = function(location) {
+            switch (location) {
+                case "Washington, United States":                
+                case "United States":
+                    return "img/us.png";
+                case "London, United Kingdom":                    
+                case "United Kingdom":
+                    return "img/uk.png";
+                default:
+                    return "img/www.png";
+            }
+        };
+
         $scope.flagClass = function(location) {
             switch (location) {
                 case "London, United Kingdom":

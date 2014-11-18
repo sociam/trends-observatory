@@ -24,12 +24,14 @@
             </table> -->
             <div ng-repeat="sm in socmacs">
                 <div ng-repeat="loc in sm.locations" class="trendlist"> 
-                    <div class="{{sm.name}}Bg {{flagClass(loc.name)}}">
+                    <div class="{{sm.name}}Bg">
+                        <img class="flag" ng-src="{{flagPath(loc.name)}}">
                     <!-- <div ng-repeat="tt in loc.trends"> -->
                         <!-- <div ng-show="checkInterval(tt.timestamp)" > -->
                             <table class="topics">
-                                <tr class="topic" ng-repeat="t in loc.trends[0].list">
-                                    <td class="rank{{t.rank}}"><span class="glyphicon {{deltaImage(t.delta)}}"></span>&nbsp;<a href="{{t.link}}">{{t.label}}</a></td>
+                                <tr ng-style="{'font-size': (0.9 + (11-t.rank)/10.0)+'vw'}" class="topic" ng-repeat="t in loc.trends[0].list">
+                                    <td class="rank"><span class="glyphicon {{deltaImage(t.delta)}}"></span>&nbsp;</td>
+                                    <td class="topiclabel"><a href="{{t.link}}">{{t.label}}</a></td>
                                 </tr>
                             </table>
                         <!-- </div> -->
