@@ -116,10 +116,12 @@ angular.module('trends', ['btford.socket-io'])
             switch (location) {
                 case "Washington, United States":                
                 case "United States":
-                    return "img/us.png";
+                    // return "img/us.png";
+                    return "img/us_rect.png";
                 case "London, United Kingdom":                    
                 case "United Kingdom":
-                    return "img/uk.png";
+                    // return "img/uk.png";
+                    return "img/uk_rect.png";
                 default:
                     return "img/www.png";
             }
