@@ -24,15 +24,13 @@
             </table> -->
             <div ng-repeat="sm in socmacs" class="socmacs {{sm.name}}">
                 <div ng-repeat="loc in sm.locations" class="location"> 
-                    <div class="topics">
-                        <img class="flag" ng-src="{{flagPath(loc.name)}}" />
-                        <table>
-                            <tr ng-style="{'font-size': (0.9 + (10-0.8*t.rank)/10.0)+'vw'}" class="topic" ng-repeat="t in loc.trends[0].list">
-                                <td class="rank"><span class="glyphicon {{deltaImage(t.delta)}}"></span></td>
-                                <td class="topiclabel"><a href="{{t.link}}">{{t.label}}</a></td>
-                            </tr>
-                        </table>
-                    </div>
+                    <img class="flag" ng-src="{{flagPath(loc.name)}}" />
+                    <table>
+                        <tr ng-style="{'font-size': (0.9 + (10-0.8*t.rank)/10.0)+'vw'}" class="topic" ng-repeat="t in loc.trends[0].list">
+                            <td class="rank"><span class="glyphicon {{deltaImage(t.delta)}}"></span></td>
+                            <td class="topiclabel"><a href="{{t.link}}">{{t.label}}</a></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         <!-- </div> -->
