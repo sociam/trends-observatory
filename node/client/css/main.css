@@ -106,6 +106,7 @@ textarea {
     /*padding: 30px;*/
     height:100%;
     vertical-align:top;
+
 }
 .socmacs div {
     vertical-align:top;
@@ -164,7 +165,7 @@ textarea {
 }
 
 .trendlist table .topiclabel {
-    width:300px;
+    width:200px;
     padding-left:20px;
 }
 .trendlist div {
