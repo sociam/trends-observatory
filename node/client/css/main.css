@@ -20,9 +20,12 @@ textarea {
 
 html {
     font-size: 1em;
-    line-height: 1.4;
-    padding:50px 20px;
+    /*line-height: 1.4;*/
+    padding:50px 40px;
+    font-family:"helvetica neue" sans-serif;
+    font-weight:200;
 }
+h1,h2,h3,h4,h5 { font-weight:200 !important; }
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
