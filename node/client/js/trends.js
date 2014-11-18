@@ -21,6 +21,7 @@ angular.module('trends', ['btford.socket-io'])
                 // console.log(json);
                 for (tti in json) {
                     tt = json[tti];
+                    tt.trends = computeDeltas([], tt.trends);
                     socmacs[tt.source].locations[tt.location].trends.push({"timestamp":tt.timestamp["$date"], "list":tt.trends});
                 }
                 $scope.socmacs = socmacs;
@@ -48,33 +49,80 @@ angular.module('trends', ['btford.socket-io'])
 
         function computeDeltas(oldT, newT) {
             if (oldT.length > 0) {
-                console.log("oldT has data: ", oldT.length);
                 for (nti in newT) {
                     var nt = newT[nti];
-                    console.log("new topic ", nt);
-                    nt['delta'] = " *";
+                    nt['delta'] = 100;
                     for (oti in oldT) {
                         var ot = oldT[oti];
-                        console.log("old topic ", ot);
                         if (nt.label === ot.label) {
-                            console.log("labels match ", nt, ot);
                             nt.delta = ot.rank - nt.rank ;
-                            if (nt.delta == 0) {
-                                nt.delta = "->";
-                            }
                         }
                     }
                 }
             } else {
                 for (nti in newT) {
                     var nt = newT[nti];
-                    console.log("new topic ", nt);
-                    nt['delta'] = " *";
-                    console.log("new topic modif ", nt);
+                    nt['delta'] = 100;
                 }
             }
             console.log("added deltas ", oldT, newT);
             return newT;
+        }
+
+        $scope.deltaImage = function(delta) {
+            switch(delta) {
+                case 0:
+                    return "glyphicon-arrow-right";
+                case 1:
+                    // go next
+                case 2:
+                    // go next
+                case 3:
+                    // go next
+                case 4:
+                    // go next
+                case 6:
+                    // go next
+                case 7:
+                    // go next
+                case 8:
+                    // go next
+                case 9:
+                    return "glyphicon-arrow-up"
+                case -1:
+                    // go next
+                case -2:
+                    // go next
+                case -3:
+                    // go next
+                case -4:
+                    // go next
+                case -5:
+                    // go next
+                case -6:
+                    // go next
+                case -7:
+                    // go next
+                case -8:
+                    // go next
+                case -9:
+                    return "glyphicon-arrow-down";
+                default: 
+                    return "glyphicon-star";
+            }
+        }
+
+        $scope.flagClass = function(location) {
+            switch (location) {
+                case "London, United Kingdom":
+                case "United States":
+                    return "us";
+                case "Washington, United States":
+                case "United Kingdom":
+                    return "uk";
+                default:
+                    return "ww";
+            }
         }
 
         $scope.checkInterval = function(ts) {
@@ -101,12 +149,13 @@ angular.module('trends', ['btford.socket-io'])
 
         // $scope.interval = new Date("2014-10-16").valueOf();
         loadMeta().then(function(sm) {
-            mysocket.addListener("trends", function (data) {
+            loadTrendsFromFile(sm, "trends.json").then(function(data) {
+            // mysocket.addListener("trends", function (data) {
                 console.log("trends", data);
-                if (Object.getOwnPropertyNames(data).length > 0) {
-                    loadTrendsFromHose(sm, data);
-                    console.log("got new data: ", data, $scope.socmacs); 
-                }
+            //     if (Object.getOwnPropertyNames(data).length > 0) {
+            //         loadTrendsFromHose(sm, data);
+            //         console.log("got new data: ", data, $scope.socmacs); 
+            //     }
             });
             console.log("added listener", sm);
         });

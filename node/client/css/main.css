@@ -99,66 +99,84 @@ textarea {
 .socmacs{
     /*width: 900px;*/
     margin: 0 auto;
+    padding: 30px;
 }
 
 .socmacs div.trendlist {
     float: left;
+    padding: 10px;
     /*width: 300px;*/
-    width: 30%;
-    text-align: center;
+/*    width: 30%;*/
+    /*text-align: center;*/
 }
 
 .socmacs div.trendlist .rank1 {
     font-size: 2.2em;
 }
-
 .socmacs div.trendlist .rank2 {
     font-size: 2em;
 }
-
 .socmacs div.trendlist .rank3 {
     font-size: 1.8em;
 }
-
 .socmacs div.trendlist .rank4 {
     font-size: 1.6em;
 }
-
 .socmacs div.trendlist .rank5 {
     font-size: 1.4em;
 }
-
 .socmacs div.trendlist .rank6 {
     font-size: 1.3em;
 }
-
 .socmacs div.trendlist .rank7 {
     font-size: 1.2em;
 }
-
 .socmacs div.trendlist .rank8 {
     font-size: 1.1em;
 }
-
 .socmacs div.trendlist .rank9 {
     font-size: 1em;
 }
-
 .socmacs div.trendlist .rank10 {
     font-size: 0.9em;
 }
 
 .topics {
     width: 100%;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .delta {
-
+    width: 16px;
+    height:16px;
 }
 
-
-
+.GoogleBg {
+    background-color: rgba(221, 75, 57, 0.1);
+    padding: 10px;
+}
+.YahooBg {
+    background-color: rgba(123, 0, 153, 0.1);
+    padding: 10px;
+}
+.TwitterBg {
+    background-color: rgba(64, 153, 266, 0.1);
+    padding: 10px;
+}
+.us {
+    background-image: url(../img/us.png); 
+    background-repeat: no-repeat; 
+    background-size: 36px;
+    padding-top: 20px;
+    background-position: right top; 
+}
+.uk {
+    background-image: url(../img/uk.png); 
+    background-repeat: no-repeat; 
+    background-size: 36px;
+    padding-top: 20px;
+    background-position: right top; 
+}
 
 /* ==========================================================================
    Helper classes

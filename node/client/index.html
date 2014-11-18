@@ -13,30 +13,30 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/livementions.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" >
     </head>
     <body ng-app="trends" ng-controller="main">
         <h1>Trending on the Web (ToW)</h1>
-        <div class="trends">
-            <table class="stats" ng-bind="stats">
+        <div class="socmacs">
+<!--             <table class="stats" ng-bind="stats">
                 <tr><td>Trending topics: </td><td class="value">{{stats.topics}}</td></tr>
                 <tr><td>Cross-machine topics: </td><td class="value">{{stats.cross}}</td></tr>
-            </table>
-            <div class="socmacs">
-                <div ng-repeat="sm in socmacs">
-                    <div ng-repeat="loc in sm.locations" class="trendlist"> 
-                        <h2>{{sm.name}}</h2><h3>{{loc.name}}</h3>
-                        <!-- <div ng-repeat="tt in loc.trends"> -->
-                            <!-- <div ng-show="checkInterval(tt.timestamp)" > -->
-                                <table class="topics">
-                                    <tr class="topic" ng-repeat="t in loc.trends[0].list">
-                                        <td class="rank{{t.rank}}"><span class="delta">{{t.delta}}</span><a href="{{t.link}}">{{t.label}}</a></td>
-                                    </tr>
-                                </table>
-                            <!-- </div> -->
+            </table> -->
+            <div ng-repeat="sm in socmacs">
+                <div ng-repeat="loc in sm.locations" class="trendlist"> 
+                    <div class="{{sm.name}}Bg {{flagClass(loc.name)}}">
+                    <!-- <div ng-repeat="tt in loc.trends"> -->
+                        <!-- <div ng-show="checkInterval(tt.timestamp)" > -->
+                            <table class="topics">
+                                <tr class="topic" ng-repeat="t in loc.trends[0].list">
+                                    <td class="rank{{t.rank}}"><span class="glyphicon {{deltaImage(t.delta)}}"></span>&nbsp;<a href="{{t.link}}">{{t.label}}</a></td>
+                                </tr>
+                            </table>
                         <!-- </div> -->
+                    <!-- </div> -->
                     </div>
                 </div>
-             </div>
+            </div>
         </div>
 
         <script src="bower_components/less/dist/less.min.js"></script>
@@ -46,6 +46,7 @@
         <script src="bower_components/angularjs/angular.min.js"></script>
         <script src="bower_components/angular-socket-io/socket.min.js"></script>
         <script src="bower_components/d3/d3.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="js/trends.js"></script>
     </body>
 </html>
