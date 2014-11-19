@@ -21,7 +21,7 @@ textarea {
 html {
     font-size: 1em;
     /*line-height: 1.4;*/
-    padding:50px 40px;
+    /*padding: 0px;*/
     font-family:"helvetica neue" sans-serif;
     font-weight:200;
 }
@@ -102,36 +102,21 @@ textarea {
    ========================================================================== */
 .socmacs{
     /*width: 900px;*/
-    margin: 20px 0px;
+    margin: 20px;
     /*padding: 30px;*/
     vertical-align:top;
     position: relative;
 }
+
 .location {
     position: relative;        
     display: inline-block;
     vertical-align:top;
-    min-height:27em;
+    min-height:35em;
     background-color: white;
     padding: 20px 35px 20px 20px;
     margin:10px;
     overflow:hidden;
-}
-/*.location:before {
-    background-color: red;
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: -1;
-    width: 390px;
-    height: 100%;
-}
-*/
-
-.delta {
-    width: 16px;
-    height:16px;
 }
 
 .topiclabel {
@@ -142,17 +127,20 @@ textarea {
     word-break: break-all;
 
  /* Non standard for webkit */
-     word-break: break-word;
-
+    word-break: break-word;
     -webkit-hyphens: auto;
-       -moz-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
 }
-.rank  {  text-align: center; }
-.Google .rank { color:rgba(221, 75, 57, 0.4); }
-.Yahoo .rank { color:rgba(123,0,153,0.4); }
-.Twitter .rank { color:rgba(64,153,266,0.4); }
+
+.rank {  
+    text-align: center; 
+    width: 34px;
+}
+.Google .rank { color:rgba(221, 75, 57, 0.5); }
+.Yahoo .rank { color:rgba(123,0,153,0.5); }
+.Twitter .rank { color:rgba(64,153,266,0.5); }
 
 .Google {
     background-color: rgba(221, 75, 57, 0.1);
@@ -173,20 +161,13 @@ textarea {
     right:16px; bottom:12px;
     width:32px;
 }
-.us {
-    background-image: url(../img/us.png); 
-    background-repeat: no-repeat; 
-    background-size: 36px;
-    padding-top: 20px;
-    background-position: right top; 
+
+.time {
+    font-size: 2em;
+    color: grey;
+    margin: 20px 20px 0px 20px;
 }
-.uk {
-    background-image: url(../img/uk.png); 
-    background-repeat: no-repeat; 
-    background-size: 36px;
-    padding-top: 20px;
-    background-position: right top; 
-}
+
 
 /* ==========================================================================
    Helper classes
