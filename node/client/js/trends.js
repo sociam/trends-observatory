@@ -28,7 +28,13 @@ angular.module('trends', ['btford.socket-io'])
                     tt = json[tti];
                     tt.trends = computeDeltas([], tt.trends);
                     tt.trends = computeTopics(tt.trends);
-                    socmacs[tt.source].locations[tt.location].trends.push({"timestamp":tt.timestamp["$date"], "list":tt.trends});
+                    for (sm in socmacs) {
+                        console.log(socmacs[sm].name, tt.source);
+                        if (socmacs[sm].name === tt.source) {
+
+                            socmacs[sm].locations[tt.location].trends.push({"timestamp":tt.timestamp["$date"], "list":tt.trends});
+                        }
+                    }
                 }
                 $scope.socmacs = socmacs;
                 deferred.resolve($scope.socmacs);
@@ -40,15 +46,20 @@ angular.module('trends', ['btford.socket-io'])
             // console.log(data);
             // console.log(socmacs);
             var old = [];
-            if (typeof socmacs[data.source].locations[data.location].trends !== 'undefined' && 
-                socmacs[data.source].locations[data.location].trends.length > 0 && 
-                typeof socmacs[data.source].locations[data.location].trends[0] !== 'undefined') {
-                socmacs[data.source].locations[data.location].trends[0].list.map(function(e) { old.push(e); });
+            for (smi in socmacs) {
+                var sm = socmacs[smi];
+                if (sm.name === data.source) {
+                    if (typeof sm.locations[data.location].trends !== 'undefined' && 
+                        sm.locations[data.location].trends.length > 0 && 
+                        typeof sm.locations[data.location].trends[0] !== 'undefined') {
+                        sm.locations[data.location].trends[0].list.map(function(e) { old.push(e); });
+                    }
+                    sm.locations[data.location].trends = []; //this is different from loading from file, because we reset the trends between loads
+                    data.trends = computeDeltas(old, data.trends);
+                    data.trends = computeTopics(data.trends);
+                    sm.locations[data.location].trends.push({"timestamp":data.timestamp["$date"], "list":data.trends});
+                }
             }
-            socmacs[data.source].locations[data.location].trends = []; //this is different from loading from file, because we reset the trends between loads
-            data.trends = computeDeltas(old, data.trends);
-            data.trends = computeTopics(data.trends);
-            socmacs[data.source].locations[data.location].trends.push({"timestamp":data.timestamp["$date"], "list":data.trends});
             $scope.lastupdate = formatDate(new Date(data.timestamp["$date"]));
             $scope.socmacs = socmacs;
             // console.log($scope.socmacs);            
@@ -118,7 +129,7 @@ angular.module('trends', ['btford.socket-io'])
             splits = _.union(splits, [label]);
             for (i in $scope.topics) {
                 var found = _.intersection($scope.topics[i].terms, splits);
-                console.log("found ",i, found, $scope.topics[i].terms, splits);
+                // console.log("found ",i, found, $scope.topics[i].terms, splits);
                 if (found.length > 0) {
                     $scope.topics[i].terms = _.union($scope.topics[i].terms, splits);
                     if ($scope.topics[i].colour == $scope.defaultColour) {
