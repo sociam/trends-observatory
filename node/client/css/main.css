@@ -101,10 +101,11 @@ textarea {
    Author's custom styles
    ========================================================================== */
 .socmacs{
+    display: inline-block;
     /*width: 900px;*/
-    margin: 20px;
+    /*margin: 20px;*/
     /*padding: 30px;*/
-    vertical-align:top;
+    /*vertical-align:top;*/
     position: relative;
 }
 
@@ -112,8 +113,12 @@ textarea {
     position: relative;        
     display: inline-block;
     vertical-align:top;
-    min-height:35em;
-    background-color: white;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 5px;
+    /*min-height:35em;*/
+    height:30%;
+    /*background-color: white;*/
     padding: 20px 35px 20px 20px;
     margin:10px;
     overflow:hidden;
@@ -121,7 +126,7 @@ textarea {
 
 .topiclabel {
     /*width:270px;*/
-    width: 19%;
+    /*width: 19%;*/
     padding:5px 10px 5px 10px;
     line-height:0.9em;
     overflow: hidden;
@@ -144,16 +149,18 @@ textarea {
 .Twitter .rank { color:rgba(64,153,266,0.5); }
 
 .Google {
-    background-color: rgba(221, 75, 57, 0.1);
+    /*background-color: rgba(221, 75, 57, 0.1);*/
+    border-color: rgba(221, 75, 57, 0.6);
     padding: 10px;
 }
 .Yahoo {
-    background-color: rgba(123, 0, 153, 0.1);
+    /*background-color: rgba(123, 0, 153, 0.1);*/
+    border-color: rgba(123, 0, 153, 0.6);
     padding: 10px;
 }
 .Twitter {
-    /*border: 1px solid rgba(64, 153, 266, 0.1);*/
-    background-color: rgba(64, 153, 266, 0.1);
+    /*background-color: rgba(64, 153, 266, 0.1);*/
+    border-color: rgba(64, 153, 266, 0.6);
     padding: 10px;
 }
 

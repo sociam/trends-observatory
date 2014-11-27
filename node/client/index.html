@@ -16,14 +16,15 @@
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" >
     </head>
     <body ng-app="trends" ng-controller="main">
-        <!-- <div class="socmacs"> -->
+        <div class="socmacs">
 <!--             <table class="stats" ng-bind="stats">
                 <tr><td>Trending topics: </td><td class="value">{{stats.topics}}</td></tr>
                 <tr><td>Cross-machine topics: </td><td class="value">{{stats.cross}}</td></tr>
             </table> -->
             <div class="time">Last updated: {{lastupdate}}</div>
-            <div ng-repeat="sm in socmacs" class="socmacs {{sm.name}}">
-                <div ng-repeat="loc in sm.locations" class="location"> 
+            <div ng-repeat="sm in socmacs" class="socmacs">
+                <div ng-repeat="loc in sm.locations" class="location {{sm.name}}"> 
+                <!-- <div ng-repeat="box in boxes"> -->
                     <img class="flag" ng-src="{{flagPath(loc.name)}}" />
                     <table>
                         <tr ng-style="{'font-size': (0.9 + (10-0.8*t.rank)/10.0)+'vw'}" class="topic" ng-repeat="t in loc.trends[0].list">
@@ -33,7 +34,7 @@
                     </table>
                 </div>
             </div>
-        <!-- </div> -->
+        </div>
 
         <script src="bower_components/less/dist/less.min.js"></script>
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
