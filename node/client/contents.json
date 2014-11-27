@@ -1,6 +1,6 @@
 {
   "sources": {
-    "Twitter": {
+    "1": {
       "name":"Twitter",
       "logo": "",
       "locations": {
@@ -31,8 +31,8 @@
         } 
       }
     },
-    "Yahoo": {
-      "name": "Yahoo",
+    "2": {
+      "name": "Google",
       "logo": "",
       "locations": {
         "United States": {
@@ -47,8 +47,8 @@
         }
       }
     },
-    "Google": {
-      "name": "Google",
+    "3": {
+      "name": "Yahoo",
       "logo": "",
       "locations": {
         "United States": {
