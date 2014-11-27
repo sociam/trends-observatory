@@ -3,10 +3,10 @@ angular.module('trends', ['btford.socket-io'])
     }).run(function() {}).factory('mysocket', function (socketFactory) {
         var myIoSocket = io.connect('http://app-001.ecs.soton.ac.uk:9001'), socket = socketFactory({ ioSocket: myIoSocket });
         return socket;
-    }).controller('main', function($scope, mysocket, $sce, $http, $q) { 
+    }).controller('main', function($scope, mysocket, dateutils, $sce, $http, $q) { 
 
         $scope.topics = []; // a topic has: terms: [list of strings], colour: #colour, [label/id??]
-        $scope.defaultColour = "#707070";
+        $scope.defaultColour = "white";
         $scope.lastColAssigned = 0;
         $scope.colorScale = d3.scale.category10();
 
@@ -217,7 +217,7 @@ angular.module('trends', ['btford.socket-io'])
                 case 7:
                 case 8:
                 case 9:
-                    return "glyphicon-chevron-down"
+                    return "glyphicon-chevron-up"
                 case -1:
                 case -2:
                 case -3:
@@ -227,7 +227,7 @@ angular.module('trends', ['btford.socket-io'])
                 case -7:
                 case -8:
                 case -9:
-                    return "glyphicon-chevron-up";
+                    return "glyphicon-chevron-down";
                 default: 
                     return "glyphicon-star";
             }
@@ -300,14 +300,14 @@ angular.module('trends', ['btford.socket-io'])
 
         // $scope.interval = new Date("2014-10-16").valueOf();
         loadMeta().then(function(sm) {
-            // loadTrendsFromFile(sm, "trends_1.json").then(function(data) {
-            mysocket.addListener("trends", function (data) {
+            loadTrendsFromFile(sm, "trends_1.json").then(function(data) {
+            // mysocket.addListener("trends", function (data) {
                 console.log("trends", data);
                 // makeBoxes();
-                if (Object.getOwnPropertyNames(data).length > 0) {
-                    loadTrendsFromHose(sm, data);
-                    console.log("got new data: ", data, $scope.socmacs); 
-                }
+                // if (Object.getOwnPropertyNames(data).length > 0) {
+                //     loadTrendsFromHose(sm, data);
+                //     console.log("got new data: ", data, $scope.socmacs); 
+                // }
             });
             console.log("added listener", sm);
         });

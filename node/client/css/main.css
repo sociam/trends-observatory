@@ -142,23 +142,23 @@ textarea {
     text-align: center; 
     width: 34px;
 }
-.Google .rank { color:rgba(221, 75, 57, 0.5); }
-.Yahoo .rank { color:rgba(123,0,153,0.5); }
-.Twitter .rank { color:rgba(64,153,266,0.5); }
+.Google .rank { color:rgba(221, 75, 57, 0.9); }
+.Yahoo .rank { color:rgba(123,0,153,0.9); }
+.Twitter .rank { color:rgba(64,153,266,0.9); }
 
 .Google {
     /*background-color: rgba(221, 75, 57, 0.1);*/
-    border-color: rgba(221, 75, 57, 0.6);
+    border-color: rgba(221, 75, 57, 1);
     padding: 10px;
 }
 .Yahoo {
     /*background-color: rgba(123, 0, 153, 0.1);*/
-    border-color: rgba(123, 0, 153, 0.6);
+    border-color: rgba(123, 0, 153, 1);
     padding: 10px;
 }
 .Twitter {
     /*background-color: rgba(64, 153, 266, 0.1);*/
-    border-color: rgba(64, 153, 266, 0.6);
+    border-color: rgba(64, 153, 266, 1);
     padding: 10px;
 }
 
@@ -170,8 +170,12 @@ textarea {
 
 .time {
     font-size: 2em;
-    color: grey;
+    color: white;
     margin: 20px 20px 0px 20px;
+}
+body {
+    background-color: #111111 !important;
+    color: white !important;
 }
 
 
