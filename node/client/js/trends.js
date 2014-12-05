@@ -300,14 +300,14 @@ angular.module('trends', ['btford.socket-io'])
 
         // $scope.interval = new Date("2014-10-16").valueOf();
         loadMeta().then(function(sm) {
-            loadTrendsFromFile(sm, "trends_1.json").then(function(data) {
-            // mysocket.addListener("trends", function (data) {
+            // loadTrendsFromFile(sm, "trends_1.json").then(function(data) {
+            mysocket.addListener("trends", function (data) {
                 console.log("trends", data);
                 // makeBoxes();
-                // if (Object.getOwnPropertyNames(data).length > 0) {
-                //     loadTrendsFromHose(sm, data);
-                //     console.log("got new data: ", data, $scope.socmacs); 
-                // }
+                if (Object.getOwnPropertyNames(data).length > 0) {
+                    loadTrendsFromHose(sm, data);
+                    console.log("got new data: ", data, $scope.socmacs); 
+                }
             });
             console.log("added listener", sm);
         });
