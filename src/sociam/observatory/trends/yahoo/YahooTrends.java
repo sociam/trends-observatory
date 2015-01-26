@@ -1,7 +1,6 @@
 package sociam.observatory.trends.yahoo;
 
 import java.io.IOException;
-import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,8 +15,8 @@ import sociam.observatory.trends.TrendingTopic;
 import sociam.observatory.trends.TrendingTopics;
 
 public class YahooTrends {
-	
-	private String baseUrl;  //	"http://country.google.com
+
+private String baseUrl;  //	"http://country.google.com
 	
 	public YahooTrends() {
 		baseUrl = "yahoo.com"; 
@@ -69,5 +68,5 @@ public class YahooTrends {
 //		System.out.println(yah.extractTopics(Country.US).getTopicCollection());
 //		System.out.println(yah.extractTopics(Country.GB).getTopicCollection());
 //	}
-
+	
 }

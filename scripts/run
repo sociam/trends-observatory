@@ -1,0 +1,2 @@
+
+cd .. ; java -classpath lib/trendsobservatory.jar:lib/* sociam.observatory.trends.Observatory

@@ -1,0 +1,11 @@
+# clean up
+cd ../bin
+rm -r *
+cd ..
+
+# build
+javac -verbose -classpath /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.71-2.5.3.0.fc19.x86_64/jre/lib/*:bin:lib/mongo-java-driver-2.9.3.jar:lib/jsoup-1.8.1.jar:lib/twitter4j-core-4.0.2.jar -d bin src/sociam/observatory/trends/Observatory.java src/sociam/observatory/trends/Country.java src/sociam/observatory/trends/TrendingTopic.java src/sociam/observatory/trends/TrendingTopics.java src/sociam/observatory/trends/storage/MongoConnection.java src/sociam/observatory/trends/storage/MongoReader.java src/sociam/observatory/trends/storage/MongoUtils.java src/sociam/observatory/trends/storage/MongoWriter.java src/sociam/observatory/trends/google/GoogleTrends.java src/sociam/observatory/trends/twitter/LocationChecker.java src/sociam/observatory/trends/twitter/TwitterTrends.java src/sociam/observatory/trends/yahoo/YahooTrends.java 
+
+# pack
+cd bin ; jar -cvf ../lib/trendsobservatory.jar sociam 
+
